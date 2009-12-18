@@ -19,9 +19,11 @@ class Internment
 	private $lastResidence;
 	private $age;
 	private $sex;
-	private $whiteoak;
+	private $cemetery_id;
 	private $notes;
 	private $lot2;
+
+	private $cemetery;
 
 	/**
 	 * Populates the object with data
@@ -97,7 +99,7 @@ class Internment
 		$data['lastResidence'] = $this->lastResidence ? $this->lastResidence : null;
 		$data['age'] = $this->age ? $this->age : null;
 		$data['sex'] = $this->sex ? $this->sex : null;
-		$data['whiteoak'] = $this->whiteoak ? $this->whiteoak : null;
+		$data['cemetery_id'] = $this->cemetery_id ? $this->cemetery_id : null;
 		$data['notes'] = $this->notes ? $this->notes : null;
 		$data['lot2'] = $this->lot2 ? $this->lot2 : null;
 
@@ -243,14 +245,6 @@ class Internment
 	}
 
 	/**
-	 * @return char
-	 */
-	public function getWhiteoak()
-	{
-		return $this->whiteoak;
-	}
-
-	/**
 	 * @return text
 	 */
 	public function getNotes()
@@ -266,6 +260,27 @@ class Internment
 		return $this->lot2;
 	}
 
+	/**
+	 * @return int
+	 */
+	public function getCemetery_id()
+	{
+		return $this->cemetery_id;
+	}
+
+	/**
+	 * @return Cemetery
+	 */
+	public function getCemetery()
+	{
+		if ($this->cemetery_id) {
+			if (!$this->cemetery) {
+				$this->cemetery = new Cemetery($this->cemetery_id);
+			}
+			return $this->cemetery;
+		}
+		return null;
+	}
 	//----------------------------------------------------------------
 	// Generic Setters
 	//----------------------------------------------------------------
@@ -379,11 +394,21 @@ class Internment
 	}
 
 	/**
-	 * @param char $char
+	 * @param int $int
 	 */
-	public function setWhiteoak($char)
+	public function setCemetery_id($int)
 	{
-		$this->whiteoak = $char;
+		$this->cemetery = new Cemetery($int);
+		$this->cemetery_id = $int;
+	}
+
+	/**
+	 * @param Cemetery $cemetery
+	 */
+	public function setCemetery($cemetery)
+	{
+		$this->cemetery_id = $cemetery->getId();
+		$this->cemetery = $cemetery;
 	}
 
 	/**

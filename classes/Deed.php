@@ -18,7 +18,9 @@ class Deed
 	private $issueDate;
 	private $notes;
 	private $lot2;
-	private $whiteoak;
+	private $cemetery_id;
+
+	private $cemetery;
 
 	/**
 	 * Populates the object with data
@@ -93,7 +95,7 @@ class Deed
 		$data['issueDate'] = $this->issueDate ? $this->issueDate->format('Y-m-d') : null;
 		$data['notes'] = $this->notes ? $this->notes : null;
 		$data['lot2'] = $this->lot2 ? $this->lot2 : null;
-		$data['whiteoak'] = $this->whiteoak ? $this->whiteoak : null;
+		$data['cemetery_id'] = $this->cemetery_id ? $this->cemetery_id : null;
 
 		if ($this->id) {
 			$this->update($data);
@@ -229,11 +231,25 @@ class Deed
 	}
 
 	/**
-	 * @return char
+	 * @return int
 	 */
-	public function getWhiteoak()
+	public function getCemetery_id()
 	{
-		return $this->whiteoak;
+		return $this->cemetery_id;
+	}
+
+	/**
+	 * @return Cemetery
+	 */
+	public function getCemetery()
+	{
+		if ($this->cemetery_id) {
+			if (!$this->cemetery) {
+				$this->cemetery = new Cemetery($this->cemetery_id);
+			}
+			return $this->cemetery;
+		}
+		return null;
 	}
 
 	//----------------------------------------------------------------
@@ -341,13 +357,22 @@ class Deed
 	}
 
 	/**
-	 * @param char $char
+	 * @param int $int
 	 */
-	public function setWhiteoak($char)
+	public function setCemetery_id($int)
 	{
-		$this->whiteoak = $char;
+		$this->cemetery = new Cemetery($int);
+		$this->cemetery_id = $int;
 	}
 
+	/**
+	 * @param Cemetery $cemetery
+	 */
+	public function setCemetery($cemetery)
+	{
+		$this->cemetery_id = $cemetery->getId();
+		$this->cemetery = $cemetery;
+	}
 
 	//----------------------------------------------------------------
 	// Custom Functions

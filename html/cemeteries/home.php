@@ -4,11 +4,10 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
-$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-$deedList = new DeedList(null,20,$currentPage);
-$deedList->find();
+$cemeteryList = new CemeteryList();
+$cemeteryList->find();
 
 $template = new Template();
-$template->blocks[] = new Block('deeds/deedList.inc',array('deedList'=>$deedList));
+$template->blocks[] = new Block('cemeteries/cemeteryList.inc',array('cemeteryList'=>$cemeteryList));
 echo $template->render();

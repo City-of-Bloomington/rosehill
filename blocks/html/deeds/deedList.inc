@@ -34,7 +34,7 @@
 				$editButton = '';
 				if (userIsAllowed('Deeds')) {
 					$url = new URL(BASE_URL.'/deeds/updateDeed.php');
-					$url->id = $deed->getId();
+					$url->deed_id = $deed->getId();
 					$editButton = "
 					<button type=\"button\" class=\"edit\" onclick=\"document.location.href='$url';\">
 						Edit
@@ -46,13 +46,25 @@
 				$owner1 = View::escape($deed->getOwner(1));
 				$owner2 = View::escape($deed->getOwner(2));
 				$date = $deed->getIssueDate('n/j/Y');
+				$cemetery = $deed->getCemetery() ? View::escape($deed->getCemetery()->getName()) : '';
 				echo "
 				<tr><td>$editButton</td>
 					<td>{$deed->getSection()}, {$deed->getLot()}</td>
-					<td>
+					<td>$owner1</td>
+					<td>$owner2</td>
+					<td>$date</td>
+					<td>$cemetery</td>
+				</tr>
 				";
 			}
 		?>
 		</tbody>
 	</table>
 </div>
+<?php
+	if ($this->deedList->getPaginator()) {
+		$pageNavigation = new Block('pageNavigation.inc',
+									array('pages'=>$this->deedList->getPaginator()->getPages()));
+		echo $pageNavigation->render('html');
+	}
+?>

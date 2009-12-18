@@ -10,8 +10,7 @@
  *
  * Beyond the basic $fields handled, you will need to write your own handling
  * of whatever extra $fields you need
- */
-/**
+ *
  * @copyright 2009 City of Bloomington, Indiana
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
@@ -52,7 +51,14 @@ class InternmentList extends ZendDbResultIterator
 		// Finding on fields from the internments table is handled here
 		if (count($fields)) {
 			foreach ($fields as $key=>$value) {
-				$this->select->where("$key=?",$value);
+				switch ($key) {
+					case 'lastname':
+					case 'firstname':
+						$this->select->where("$key like ?","$value%");
+						break;
+					default:
+						$this->select->where("$key=?",$value);
+				}
 			}
 		}
 

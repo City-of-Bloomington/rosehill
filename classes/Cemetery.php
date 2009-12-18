@@ -139,4 +139,14 @@ class Cemetery
 	{
 		return $this->name;
 	}
+
+	/**
+	 * Returns all the available sections for this cemetery
+	 *
+	 * @return array
+	 */
+	public function getSections()
+	{
+		return Internment::getSections($this);
+	}
 }

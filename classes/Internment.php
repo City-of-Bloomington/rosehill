@@ -432,4 +432,21 @@ class Internment
 	// Custom Functions
 	// We recommend adding all your custom code down here at the bottom
 	//----------------------------------------------------------------
+	/**
+	 * Returns the list of available sections
+	 *
+	 * @return array
+	 */
+	public static function getSections(Cemetery $cemetery=null)
+	{
+		$zend_db = Database::getConnection();
+		$select = new Zend_Db_Select($zend_db);
+		$select->distinct()->from('internments','section');
+		$select->where('section is not null');
+		if ($cemetery) {
+			$select->where('cemetery_id=?',$cemetery->getId());
+		}
+		$select->order(array('section'));
+		return $zend_db->fetchCol($select);
+	}
 }

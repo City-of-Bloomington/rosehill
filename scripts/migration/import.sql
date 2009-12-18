@@ -14,3 +14,8 @@ select r.ID,r.SEC,r.LOT,r.BOOK,r.PAGENUM,r.DEATH,
 		r.POB,r.LATE_RES,r.AGE,r.SEX,c.id,r.NOTES,r.lot2
 from rosehill.ROSEHILL r
 left join cemeteries c on r.whiteoak=substr(c.name,1,1);
+
+
+-- A little bit of cleanup on the data
+update interments set section='P.G.' where section='P.G';
+update interments set section=null where section='0';

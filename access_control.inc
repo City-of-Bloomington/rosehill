@@ -19,7 +19,7 @@ foreach ($roles as $role) {
  */
 $ZEND_ACL->add(new Zend_Acl_Resource('Users'));
 $ZEND_ACL->add(new Zend_Acl_Resource('Deeds'));
-$ZEND_ACL->add(new Zend_Acl_Resource('Internments'));
+$ZEND_ACL->add(new Zend_Acl_Resource('Interments'));
 $ZEND_ACL->add(new Zend_Acl_Resource('Cemeteries'));
 
 
@@ -30,4 +30,4 @@ $ZEND_ACL->add(new Zend_Acl_Resource('Cemeteries'));
 $ZEND_ACL->allow('Administrator');
 
 $ZEND_ACL->allow('Editor','Deeds');
-$ZEND_ACL->allow('Editor','Internments');
+$ZEND_ACL->allow('Editor','Interments');

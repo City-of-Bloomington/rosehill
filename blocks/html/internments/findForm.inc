@@ -6,7 +6,7 @@
  */
 ?>
 <h1>Search Burial Records</h1>
-<form method="get" action="<?php echo BASE_URL; ?>/internments">
+<form method="get" action="<?php echo BASE_URL; ?>/interments">
 	<table>
 		<tr><td><label for="lastname">Last Name</label></td>
 			<td><input name="lastname" id="lastname"

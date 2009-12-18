@@ -1,12 +1,12 @@
 <?php
 /**
- * A collection class for Internment objects
+ * A collection class for Interment objects
  *
  * This class creates a zend_db select statement.
  * ZendDbResultIterator handles iterating and paginating those results.
  * As the results are iterated over, ZendDbResultIterator will pass each desired
  * row back to this class's loadResult() which will be responsible for hydrating
- * each Internment object
+ * each Interment object
  *
  * Beyond the basic $fields handled, you will need to write your own handling
  * of whatever extra $fields you need
@@ -15,7 +15,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
-class InternmentList extends ZendDbResultIterator
+class IntermentList extends ZendDbResultIterator
 {
 	/**
 	 * Creates a basic select statement for the collection.
@@ -46,9 +46,9 @@ class InternmentList extends ZendDbResultIterator
 	 */
 	public function find($fields=null,$order='id',$limit=null,$groupBy=null)
 	{
-		$this->select->from('internments');
+		$this->select->from('interments');
 
-		// Finding on fields from the internments table is handled here
+		// Finding on fields from the interments table is handled here
 		if (count($fields)) {
 			foreach ($fields as $key=>$value) {
 				switch ($key) {
@@ -65,7 +65,7 @@ class InternmentList extends ZendDbResultIterator
 		// Finding on fields from other tables requires joining those tables.
 		// You can handle fields from other tables by adding the joins here
 		// If you add more joins you probably want to make sure that the
-		// above foreach only handles fields from the internments table.
+		// above foreach only handles fields from the interments table.
 
 		$this->select->order($order);
 		if ($limit) {
@@ -78,16 +78,16 @@ class InternmentList extends ZendDbResultIterator
 	}
 
 	/**
-	 * Hydrates all the Internment objects from a database result set
+	 * Hydrates all the Interment objects from a database result set
 	 *
 	 * This is a callback function, called from ZendDbResultIterator.  It is
 	 * called once per row of the result.
 	 *
 	 * @param int $key The index of the result row to load
-	 * @return Internment
+	 * @return Interment
 	 */
 	protected function loadResult($key)
 	{
-		return new Internment($this->result[$key]);
+		return new Interment($this->result[$key]);
 	}
 }

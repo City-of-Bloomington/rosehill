@@ -4,22 +4,22 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
-if (!userIsAllowed('Internments')) {
+if (!userIsAllowed('Interments')) {
 	$_SESSION['errorMessages'][] = new Exception('noAccessAllowed');
-	header('Location: '.BASE_URL.'/internments');
+	header('Location: '.BASE_URL.'/interments');
 	exit();
 }
 
-$internment = new Internment($_REQUEST['internment_id']);
-if (isset($_POST['internment'])) {
-	foreach ($_POST['internment'] as $field=>$value) {
+$interment = new Interment($_REQUEST['interment_id']);
+if (isset($_POST['interment'])) {
+	foreach ($_POST['interment'] as $field=>$value) {
 		$set = 'set'.ucfirst($field);
-		$internment->$set($value);
+		$interment->$set($value);
 	}
 
 	try {
-		$internment->save();
-		header('Location: '.BASE_URL.'/internments');
+		$interment->save();
+		header('Location: '.BASE_URL.'/interments');
 		exit();
 	}
 	catch (Exception $e) {
@@ -28,5 +28,5 @@ if (isset($_POST['internment'])) {
 }
 
 $template = new Template();
-$template->blocks[] = new Block('internments/updateInternmentForm.inc',array('internment'=>$internment));
+$template->blocks[] = new Block('interments/updateIntermentForm.inc',array('interment'=>$interment));
 echo $template->render();

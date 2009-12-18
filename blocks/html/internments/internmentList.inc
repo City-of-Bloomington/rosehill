@@ -3,21 +3,21 @@
  * @copyright 2009 City of Bloomington, Indiana
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
- * @param InternmentList $this->internmentList
+ * @param IntermentList $this->intermentList
  */
 ?>
 <div class="interfaceBox">
 	<h1>
 		<?php
-			if (userIsAllowed('Internments')) {
+			if (userIsAllowed('Interments')) {
 				echo "
-				<button type=\"button\" class=\"add\" onclick=\"document.location.href='".BASE_URL."/internments/addInternment.php';\">
+				<button type=\"button\" class=\"add\" onclick=\"document.location.href='".BASE_URL."/interments/addInterment.php';\">
 					Add
 				</button>
 				";
 			}
 		?>
-		Internments
+		Interments
 	</h1>
 	<table>
 		<thead>
@@ -31,28 +31,28 @@
 		</thead>
 		<tbody>
 		<?php
-			foreach ($this->internmentList as $internment) {
+			foreach ($this->intermentList as $interment) {
 				$editButton = '';
-				if (userIsAllowed('Internments')) {
-					$url = new URL(BASE_URL.'/internments/updateInternment.php');
-					$url->internment_id = $internment->getId();
+				if (userIsAllowed('Interments')) {
+					$url = new URL(BASE_URL.'/interments/updateInterment.php');
+					$url->interment_id = $interment->getId();
 					$editButton = "
 					<button type=\"button\" class=\"edit\" onclick=\"document.location.href='$url';\">
 						Edit
 					</button>
 					";
 				}
-				$last = View::escape($internment->getLastname());
-				$first = View::escape($internment->getFirstname());
-				$date = $internment->getDeceasedDate('n/j/Y');
-				$cemetery = View::escape($internment->getCemetery());
+				$last = View::escape($interment->getLastname());
+				$first = View::escape($interment->getFirstname());
+				$date = $interment->getDeceasedDate('n/j/Y');
+				$cemetery = View::escape($interment->getCemetery());
 
 				$section_lot = array();
-				if ($internment->getSection()) {
-					$section_lot[] = $internment->getSection();
+				if ($interment->getSection()) {
+					$section_lot[] = $interment->getSection();
 				}
-				if ($internment->getLot()) {
-					$section_lot[] = $internment->getLot();
+				if ($interment->getLot()) {
+					$section_lot[] = $interment->getLot();
 				}
 				$section_lot = View::escape(implode(', ',$section_lot));
 
@@ -71,9 +71,9 @@
 	</table>
 </div>
 <?php
-	if ($this->internmentList->getPaginator()) {
+	if ($this->intermentList->getPaginator()) {
 		$pageNavigation = new Block('pageNavigation.inc',
-									array('pages'=>$this->internmentList->getPaginator()->getPages()));
+									array('pages'=>$this->intermentList->getPaginator()->getPages()));
 		echo $pageNavigation->render('html');
 	}
 ?>

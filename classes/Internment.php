@@ -4,7 +4,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
-class Internment
+class Interment
 {
 	private $id;
 	private $section;
@@ -45,7 +45,7 @@ class Internment
 			}
 			else {
 				$zend_db = Database::getConnection();
-				$sql = 'select * from internments where id=?';
+				$sql = 'select * from interments where id=?';
 				$result = $zend_db->fetchRow($sql,array($id));
 			}
 
@@ -60,7 +60,7 @@ class Internment
 				}
 			}
 			else {
-				throw new Exception('internments/unknownInternment');
+				throw new Exception('interments/unknownInterment');
 			}
 		}
 		else {
@@ -114,14 +114,14 @@ class Internment
 	private function update($data)
 	{
 		$zend_db = Database::getConnection();
-		$zend_db->update('internments',$data,"id='{$this->id}'");
+		$zend_db->update('interments',$data,"id='{$this->id}'");
 	}
 
 	private function insert($data)
 	{
 		$zend_db = Database::getConnection();
-		$zend_db->insert('internments',$data);
-		$this->id = $zend_db->lastInsertId('internments','id');
+		$zend_db->insert('interments',$data);
+		$this->id = $zend_db->lastInsertId('interments','id');
 	}
 
 	//----------------------------------------------------------------
@@ -441,7 +441,7 @@ class Internment
 	{
 		$zend_db = Database::getConnection();
 		$select = new Zend_Db_Select($zend_db);
-		$select->distinct()->from('internments','section');
+		$select->distinct()->from('interments','section');
 		$select->where('section is not null');
 		if ($cemetery) {
 			$select->where('cemetery_id=?',$cemetery->getId());

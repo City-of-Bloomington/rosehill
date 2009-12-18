@@ -1,5 +1,5 @@
 <div class="menuBar">
-	<ul><li><a href="<?php echo BASE_URL; ?>/internments">Internments</a></li>
+	<ul><li><a href="<?php echo BASE_URL; ?>/interments">Interments</a></li>
 	<?php
 		if (userIsAllowed('Cemeteries')) {
 			echo "<li><a href=\"".BASE_URL."/cemeteries\">Cemeteries</a></li>";

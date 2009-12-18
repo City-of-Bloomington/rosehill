@@ -5,22 +5,22 @@
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
 
-if (!userIsAllowed('Internments')) {
+if (!userIsAllowed('Interments')) {
 	$_SESSION['errorMessages'][] = new Exception('noAccessAllowed');
-	header('Location: '.BASE_URL.'/internments');
+	header('Location: '.BASE_URL.'/interments');
 	exit();
 }
 
-if (isset($_POST['internment'])) {
-	$internment = new Internment();
-	foreach ($_POST['internment'] as $field=>$value) {
+if (isset($_POST['interment'])) {
+	$interment = new Interment();
+	foreach ($_POST['interment'] as $field=>$value) {
 		$set = 'set'.ucfirst($field);
-		$internment->$set($value);
+		$interment->$set($value);
 	}
 
 	try {
-		$internment->save();
-		header('Location: '.BASE_URL.'/internments');
+		$interment->save();
+		header('Location: '.BASE_URL.'/interments');
 		exit();
 	}
 	catch(Exception $e) {
@@ -29,5 +29,5 @@ if (isset($_POST['internment'])) {
 }
 
 $template = new Template();
-$template->blocks[] = new Block('internments/addInternmentForm.inc');
+$template->blocks[] = new Block('interments/addIntermentForm.inc');
 echo $template->render();

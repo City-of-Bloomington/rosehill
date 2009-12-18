@@ -147,6 +147,6 @@ class Cemetery
 	 */
 	public function getSections()
 	{
-		return Internment::getSections($this);
+		return Interment::getSections($this);
 	}
 }

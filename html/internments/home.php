@@ -29,14 +29,14 @@ foreach ($_GET as $field=>$value) {
 }
 
 if (count($search)) {
-	$internmentList = new InternmentList($search,20,$currentPage);
+	$intermentList = new IntermentList($search,20,$currentPage);
 }
 
 
 $template = new Template();
-$template->blocks[] = new Block('internments/findForm.inc');
-if (isset($internmentList)) {
-	$template->blocks[] = new Block('internments/internmentList.inc',
-									array('internmentList'=>$internmentList));
+$template->blocks[] = new Block('interments/findForm.inc');
+if (isset($intermentList)) {
+	$template->blocks[] = new Block('interments/intermentList.inc',
+									array('intermentList'=>$intermentList));
 }
 echo $template->render();

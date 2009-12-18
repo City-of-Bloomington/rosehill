@@ -5,3 +5,29 @@
 #banner .loginForm legend { display:none; }
 #banner .loginForm button {display:inline; }
 #banner .loginForm a { font-weight:bold; color:blue; }
+.searchForm {}
+#burialLinks td { vertical-align:middle; }
+#aboutCemeteries { float:left; width:180px;  }
+#cemeteryImages { float:right; width:200px; }
+
+.pageNavigation h4 { display:inline; float:left; }
+.pageNavigation ul{ display:inline; }
+.pageNavigation li { padding-left:5px; }
+
+
+.searchInterment th {text-align:left; width:75px; }
+
+table { margin:8px 0; overflow:auto; }
+tr { }
+td label { font-weight:normal; color:#666666; }
+td { padding:4px 4px 2px 4px; vertical-align:top; border:0; }
+thead th {
+	font-weight:normal; color:#666666; text-align:left;
+	vertical-align:bottom; height:8pt; padding:4px 4px 2px 2px;
+	}
+tbody th {
+	font-weight:normal; color:#666666; text-align:right;
+	height:8pt; padding:4px 4px 2px 2px;
+	}
+th a:link,th a:visited { color:#3366cc; background-color:inherit; }
+form table { border:none; }

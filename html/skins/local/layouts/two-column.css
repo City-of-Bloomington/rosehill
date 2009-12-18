@@ -1,5 +1,6 @@
-#panel-container { overflow:auto; }
-#panel-one { float:left; width:176px; }
-#content-panel { margin-left: 178px; }
+#panel-container { width:100%; overflow:auto; padding-left:10px; }
+#panel-one { width:490px; float:right; }
+#content-panel { margin-right:495px; border-right:1px solid #999999; width:470px; }
+#panel-two { clear:right; width:100%; }
 
 #footer { clear:both; }

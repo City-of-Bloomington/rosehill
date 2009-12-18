@@ -34,7 +34,8 @@ create table user_roles (
 
 create table cemeteries (
 	id int unsigned not null primary key auto_increment,
-	name varchar(128) not null
+	name varchar(128) not null,
+	googleMapURL varchar(255)
 ) engine=InnoDB;
 
 create table deeds (

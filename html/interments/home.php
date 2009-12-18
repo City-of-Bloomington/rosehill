@@ -39,4 +39,5 @@ if (isset($intermentList)) {
 	$template->blocks[] = new Block('interments/intermentList.inc',
 									array('intermentList'=>$intermentList));
 }
+$template->blocks['panel-one'][] = new Block('about.inc');
 echo $template->render();

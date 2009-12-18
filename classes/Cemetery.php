@@ -8,6 +8,7 @@ class Cemetery
 {
 	private $id;
 	private $name;
+	private $googleMapURL;
 
 	/**
 	 * Populates the object with data
@@ -76,6 +77,7 @@ class Cemetery
 
 		$data = array();
 		$data['name'] = $this->name;
+		$data['googleMapURL'] = $this->googleMapURL ? $this->googleMapURL : null;
 
 		if ($this->id) {
 			$this->update($data);
@@ -118,6 +120,13 @@ class Cemetery
 		return $this->name;
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getGoogleMapURL()
+	{
+		return $this->googleMapURL;
+	}
 	//----------------------------------------------------------------
 	// Generic Setters
 	//----------------------------------------------------------------
@@ -130,7 +139,13 @@ class Cemetery
 		$this->name = trim($string);
 	}
 
-
+	/**
+	 * @param string $string
+	 */
+	public function setGoogleMapURL($string)
+	{
+		$this->googleMapURL = trim($string);
+	}
 	//----------------------------------------------------------------
 	// Custom Functions
 	// We recommend adding all your custom code down here at the bottom
@@ -148,5 +163,30 @@ class Cemetery
 	public function getSections()
 	{
 		return Interment::getSections($this);
+	}
+
+	/**
+	 * @return URL
+	 */
+	public function getURL()
+	{
+		return new URL(BASE_URL.'/cemeteries/viewCemetery.php?cemetery_id='.$this->id);
+	}
+
+	/**
+	 * Returns the URL to the map image for this cemetery
+	 *
+	 * Available map types are:
+	 * 		full, thumb - for the main map
+	 * 		highlight, zoom - for the section maps
+	 *
+	 * @return string
+	 */
+	public function getMap($type="full")
+	{
+		$mapDirectory = "images/cemeteries/{$this->id}";
+		$filename = $type=='full' ? 'map.jpg' : 'map_thumb.jpg';
+
+		return BASE_URL."/$mapDirectory/$filename";
 	}
 }

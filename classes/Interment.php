@@ -433,6 +433,14 @@ class Interment
 	// We recommend adding all your custom code down here at the bottom
 	//----------------------------------------------------------------
 	/**
+	 * @return string
+	 */
+	public function getURL()
+	{
+		return BASE_URL.'/interments/viewInterment.php?interment_id='.$this->id;
+	}
+
+	/**
 	 * Returns the list of available sections
 	 *
 	 * @return array
@@ -448,5 +456,39 @@ class Interment
 		}
 		$select->order(array('section'));
 		return $zend_db->fetchCol($select);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getFullname()
+	{
+		$name = array();
+		if ($this->firstname) {
+			$name[] = $this->firstname;
+		}
+		if ($this->middleInitial) {
+			$name[] = $this->middleInitial;
+		}
+		if ($this->lastname) {
+			$name[] = $this->lastname;
+		}
+		return implode(' ',$name);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getSectionMapURL($section,$type='highlight')
+	{
+		$section = preg_replace('/[^a-z\-]/','',strtolower($section));
+		$type = $type=='highlight' ? 'highlight' : 'zoom';
+
+		$mapDirectory = "images/cemeteries/{$this->cemetery_id}";
+		$filename = "$type/$section.jpg";
+
+		if (file_exists(APPLICATION_HOME."/html/$mapDirectory/$filename")) {
+			return BASE_URL."$mapDirectory/$filename";
+		}
 	}
 }

@@ -58,7 +58,7 @@
 
 				echo "
 				<tr><td>$editButton</td>
-					<td>$last</td>
+					<td><a href=\"{$interment->getURL()}\">$last</a></td>
 					<td>$first</td>
 					<td>$date</td>
 					<td>$cemetery</td>

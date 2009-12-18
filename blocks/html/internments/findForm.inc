@@ -23,14 +23,15 @@
 			$cemeteries->find();
 			foreach ($cemeteries as $cemetery) {
 				$name = View::escape($cemetery->getName());
+				$fieldname = 'sections_'.$cemetery->getId();
 				echo "
 				<tr><td><label for=\"\">$name Sections</label></td>
-					<td><select name=\"sections_{$cemetery->getId()}\">
+					<td><select name=\"$fieldname\">
 							<option value=\"\">All</option>
 				";
 					foreach ($cemetery->getSections() as $section) {
 						$section = View::escape($section);
-						$selected = (isset($_GET['section']) && $_GET['section']==$section)
+						$selected = (isset($_GET[$fieldname]) && $_GET[$fieldname]==$section)
 									? 'selected="selected"'
 									: '';
 						echo "<option $selected>$section</option>";

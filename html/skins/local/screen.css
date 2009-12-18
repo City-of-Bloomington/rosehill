@@ -1,0 +1,7 @@
+#banner .loginForm { position:absolute; top:5px; right:5px; color:white; }
+#banner .loginForm h1 { display:none; }
+#banner .loginForm th label { color:white; }
+#banner .loginForm fieldset { border:none; margin:0; padding:0; }
+#banner .loginForm legend { display:none; }
+#banner .loginForm button {display:inline; }
+#banner .loginForm a { font-weight:bold; color:blue; }

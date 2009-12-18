@@ -54,7 +54,7 @@ create table deeds (
 	foreign key (cemetery_id) references cemeteries(id)
 ) engine=InnoDB;
 
-create table internments (
+create table interments (
 	id int(11) unsigned not null primary key auto_increment,
 	section varchar(5),
 	lot varchar(5),

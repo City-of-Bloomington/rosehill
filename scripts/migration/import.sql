@@ -6,7 +6,7 @@ from rosehill.DEED r
 left join cemeteries c on r.whiteoak=substr(c.name,1,1);
 
 
-insert internments(id,section,lot,book,pageNumber,deceasedDate,
+insert interments(id,section,lot,book,pageNumber,deceasedDate,
 					lastname,firstname,middleInitial,
 					birthPlace,lastResidence,age,sex,cemetery_id,notes,lot2)
 select r.ID,r.SEC,r.LOT,r.BOOK,r.PAGENUM,r.DEATH,

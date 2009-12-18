@@ -9,27 +9,21 @@
 	<fieldset><legend>Search Deeds</legend>
 		<table>
 			<tr><td><label for="section">Section</label></td>
-				<td><input name="section" id="section" size="3" />
+				<td><input name="section" id="section" size="3"
+							value="<?php echo isset($_GET['section']) ? View::escape($_GET['section']) : ''; ?>" />
+					<label for="lot">Lot</label>
+					<input name="lot" id="lot" size="3"
+							value="<?php echo isset($_GET['lot']) ? View::escape($_GET['lot']) : ''; ?>" />
 				</td>
 			</tr>
 
-			<tr><td><label for="lot">Lot</label></td>
-				<td><input name="lot" id="lot" size="3" />
-				</td>
-			</tr>
-
-			<tr><td><label for="lastname">Lastname</label></td>
-				<td><input name="lastname" id="lastname" />
-				</td>
-			</tr>
-
-			<tr><td><label for="firstname">Firstname</label></td>
-				<td><input name="firstname" id="firstname" />
-				</td>
-			</tr>
-
-			<tr><td><label for="middleInitial">Middle Initial</label></td>
-				<td><input name="middleInitial" id="middleInitial" />
+			<tr><td><label for="firstname">Owner</label></td>
+				<td><label for="firstname">Firstname</label>
+					<input name="firstname" id="firstname"
+							value="<?php echo isset($_GET['firstname']) ? View::escape($_GET['firstname']) : ''; ?>" />
+					<label for="lastname">Lastname</label>
+					<input name="lastname" id="lastname"
+							value="<?php echo isset($_GET['lastname']) ? View::escape($_GET['lastname']) : ''; ?>" />
 				</td>
 			</tr>
 
@@ -41,6 +35,9 @@
 							$list->find();
 							foreach ($list as $cemetery) {
 								$name = View::escape($cemetery->getName());
+								$selected = (isset($_GET['cemetery']) && $_GET['cemetery']==$name)
+											? 'selected="selected"'
+											: '';
 								echo "<option value=\"{$cemetery->getId()}\">$name</option>";
 							}
 						?>
@@ -50,5 +47,8 @@
 		</table>
 
 		<button type="submit" class="search">Search</button>
+		<button type="button" onclick="document.location.href='<?php echo BASE_URL; ?>/deeds';">
+			Clear
+		</button>
 	</fieldset>
 </form>

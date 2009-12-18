@@ -18,6 +18,13 @@
  */
 class DeedList extends ZendDbResultIterator
 {
+	private $columns = array(
+		'id','section','lot','lot2','cemetery_id',
+		'lastname1','firstname1','middleInitial1',
+		'lastname2','firstname2','middleInitial2',
+		'issueDate','notes'
+	);
+
 	/**
 	 * Creates a basic select statement for the collection.
 	 *
@@ -52,9 +59,27 @@ class DeedList extends ZendDbResultIterator
 		// Finding on fields from the deed table is handled here
 		if (count($fields)) {
 			foreach ($fields as $key=>$value) {
-				$this->select->where("$key=?",$value);
+				if ($value) {
+					if (in_array($key,$this->columns)) {
+						$this->select->where("$key=?",$value);
+					}
+				}
+			}
+
+			if (isset($fields['lastname']) && $fields['lastname']) {
+				$this->select->where("(lastname1 like ? or lastname2 like ?)",
+									array("$fields[lastname]%"));
+			}
+			if (isset($fields['firstname']) && $fields['firstname']) {
+				$this->select->where("(firstname1 like ? or firstname2 like ?)",
+									array("$fields[firstname]%"));
+			}
+			if (isset($fields['middleInitial']) && $fields['middleInitial']) {
+				$this->select->where("(middleInitial1 like ? or middleInitial2 like ?)",
+									array("$fields[middleInitial]%"));
 			}
 		}
+
 
 		// Finding on fields from other tables requires joining those tables.
 		// You can handle fields from other tables by adding the joins here

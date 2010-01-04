@@ -19,8 +19,6 @@ if (isset($_POST['section_id'])) {
 	try {
 		$section->save();
 		if (isset($_FILES)) {
-			echo "Found files\n";
-			print_r($_FILES);
 			if (isset($_FILES['highlight_map']) && $_FILES['highlight_map']['tmp_name']) {
 				$section->saveMap($_FILES['highlight_map'],'highlight');
 			}
@@ -28,7 +26,7 @@ if (isset($_POST['section_id'])) {
 				$section->saveMap($_FILES['zoom_map'],'zoom');
 			}
 		}
-		#header('Location: '.$section->getCemetery()->getURL());
+		header('Location: '.$section->getCemetery()->getURL());
 		exit();
 	}
 	catch (Exception $e) {

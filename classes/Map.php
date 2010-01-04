@@ -16,9 +16,9 @@ class Map
 	/**
 	 * @param string $directory Where to store the file
 	 * @param array|string $file  Either an entry from $_FILES or a path to a file
-	 * @param int $id	The unique ID for the object the map is for
+	 * @param string $newName	The filename to use
 	 */
-	public static function saveFile($directory,$file,$id)
+	public static function saveFile($directory,$file,$newName)
 	{
 		// Handle passing in either a $_FILES array or just a path to a file
 		$tempFile = is_array($file) ? $file['tmp_name'] : $file;
@@ -36,17 +36,20 @@ class Map
 			throw new Exception('unknownFileType');
 		}
 
+		// Clean out any previous version of the file
+		foreach(glob("$directory/$newName.*") as $file) {
+			unlink($file);
+		}
+
 		// Move the file where it's supposed to go
 		if (!is_dir($directory)) {
 			mkdir($directory,0777,true);
 		}
-		$newFile = "$directory/$id.$extension";
-		echo "Saving $newFile\n";
+		$newFile = "$directory/$newName.$extension";
 		rename($tempFile,$newFile);
 		chmod($newFile,0666);
 
 		if (!is_file($newFile)) {
-			echo "$newFile was not saved\n";
 			throw new Exception('media/uploadFailed');
 		}
 	}

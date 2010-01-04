@@ -7,7 +7,7 @@
  */
 ?>
 <h1>Add Section</h1>
-<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
+<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" enctype="multipart/form-data">
 	<fieldset><legend>Section Info</legend>
 		<input type="hidden" name="cemetery_id" value="<?php echo $this->cemetery->getId(); ?>" />
 		<table>
@@ -27,5 +27,16 @@
 				onclick="document.location.href='<?php echo $this->cemetery->getURL(); ?>';">
 			Cancel
 		</button>
+	</fieldset>
+
+	<fieldset><legend>Maps</legend>
+		<div>
+			<label for="highlight_map">Highlight Map</lable>
+			<input type="file" name="highlight_map" id="highlight_map" />
+		</div>
+		<div>
+			<label for="zoom_map">Zoomed Map</lable>
+			<input type="file" name="zoom_map" id="zoom_map" />
+		</div>
 	</fieldset>
 </form>

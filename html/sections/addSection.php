@@ -22,6 +22,14 @@ if (isset($_POST['section'])) {
 
 	try {
 		$section->save();
+		if (isset($_FILES)) {
+			if (isset($_FILES['highlight_map']) && $_FILES['highlight_map']['tmp_name']) {
+				$section->saveMap($_FILES['highlight_map'],'highlight');
+			}
+			if (isset($_FILES['zoom_map']) && $_FILES['zoom_map']['tmp_name']) {
+				$section->saveMap($_FILES['zoom_map'],'zoom');
+			}
+		}
 		header('Location: '.$cemetery->getURL());
 		exit();
 	}

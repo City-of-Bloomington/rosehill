@@ -230,7 +230,6 @@ class Section
 
 		$directory = APPLICATION_HOME."/html/$imageDir/$type";
 
-		echo "Saving $type map to $directory\n";
 		Map::saveFile($directory,$file,$this->id);
 	}
 }

@@ -7,7 +7,7 @@
  */
 ?>
 <h1>Update Cemetery</h1>
-<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
+<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" enctype="multipart/form-data">
 	<fieldset><legend>Cemetery Info</legend>
 		<input name="cemetery_id" type="hidden" value="<?php echo $this->cemetery->getId(); ?>" />
 		<table>
@@ -29,5 +29,27 @@
 		<button type="button" class="cancel" onclick="document.location.href='<?php echo BASE_URL; ?>/cemeteries';">
 			Cancel
 		</button>
+	</fieldset>
+	<fieldset><legend>Maps</legend>
+		<div>
+			<label for="map">Map</lable>
+			<input type="file" name="map" id="map" />
+		</div>
+		<?php
+			$map = $this->cemetery->getMap();
+			if ($map) {
+				echo "<div><img src=\"$map\" /></div>";
+			}
+		?>
+		<div>
+			<label for="thumbnail">Thumbnail</lable>
+			<input type="file" name="thumbnail" id="thumbnail" />
+		</div>
+		<?php
+			$map = $this->cemetery->getMap('thumbnail');
+			if ($map) {
+				echo "<div><img src=\"$map\" /></div>";
+			}
+		?>
 	</fieldset>
 </form>

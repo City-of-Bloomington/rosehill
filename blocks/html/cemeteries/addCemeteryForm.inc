@@ -6,7 +6,7 @@
  */
 ?>
 <h1>Add Cemetery</h1>
-<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
+<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" enctype="multipart/form-data">
 	<fieldset><legend>Cemetery Info</legend>
 		<table>
 
@@ -24,5 +24,15 @@
 		<button type="button" class="cancel" onclick="document.location.href='<?php echo BASE_URL; ?>/cemeteries';">
 			Cancel
 		</button>
+	</fieldset>
+	<fieldset><legend>Maps</legend>
+		<div>
+			<label for="map">Map</lable>
+			<input type="file" name="map" id="map" />
+		</div>
+		<div>
+			<label for="thumbnail">Thumbnail</lable>
+			<input type="file" name="thumbnail" id="thumbnail" />
+		</div>
 	</fieldset>
 </form>

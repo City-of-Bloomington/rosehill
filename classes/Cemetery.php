@@ -173,6 +173,11 @@ class Cemetery
 		return new URL(BASE_URL.'/cemeteries/viewCemetery.php?cemetery_id='.$this->id);
 	}
 
+	private function getMapDirectory()
+	{
+		return 'images/cemeteries/'.$this->id;
+	}
+
 	/**
 	 * Returns the URL to the map image for this cemetery
 	 *
@@ -183,9 +188,26 @@ class Cemetery
 	 */
 	public function getMap($type="full")
 	{
-		$mapDirectory = "images/cemeteries/{$this->id}";
-		$filename = $type=='full' ? 'map.jpg' : 'map_thumb.jpg';
+		$imageDir = "images/cemeteries/{$this->id}";
+		$filename = $type=='full' ? 'map' : 'map_thumb';
 
-		return BASE_URL."/$mapDirectory/$filename";
+		$glob = glob(APPLICATION_HOME."/html/$imageDir/$filename.*");
+		if (count($glob)) {
+			$filename = basename($glob[0]);
+			return BASE_URL."/$imageDir/$filename";
+		}
+	}
+
+	/**
+	 * @param array|string $file  Either an entry from $_FILES or a path to a file
+	 */
+	public function saveMap($file,$type)
+	{
+		$imageDir = $this->getMapDirectory();
+		$name = $type=='full' ? 'map' : 'map_thumb';
+
+		$directory = APPLICATION_HOME."/html/$imageDir";
+
+		Map::saveFile($directory,$file,$name);
 	}
 }

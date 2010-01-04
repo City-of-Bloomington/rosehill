@@ -21,6 +21,7 @@ $ZEND_ACL->add(new Zend_Acl_Resource('Users'));
 $ZEND_ACL->add(new Zend_Acl_Resource('Deeds'));
 $ZEND_ACL->add(new Zend_Acl_Resource('Interments'));
 $ZEND_ACL->add(new Zend_Acl_Resource('Cemeteries'));
+$ZEND_ACL->add(new Zend_Acl_Resource('Sections'));
 
 
 /**

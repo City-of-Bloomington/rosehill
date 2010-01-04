@@ -1,3 +1,8 @@
+insert cemeteries set id=1,name='White Oak';
+insert cemeteries set id=2,name='Rose Hill';
+
+
+
 insert deeds (id,section,lot,lastname1,firstname1,middleInitial1,
 				lastname2,firstname2,middleInitial2,issueDate,notes,lot2,cemetery_id)
 select r.ID,r.SEC,r.LOT,r.LNAME1,r.FNAME1,r.MI1,
@@ -19,3 +24,24 @@ left join cemeteries c on r.whiteoak=substr(c.name,1,1);
 -- A little bit of cleanup on the data
 update interments set section='P.G.' where section='P.G';
 update interments set section=null where section='0';
+
+
+
+insert sections (code,cemetery_id)
+select distinct section,1 from interments
+where cemetery_id=1 and section is not null;
+
+insert sections (code,cemetery_id)
+select distinct section,2 from interments
+where cemetery_id=2 and section is not null;
+
+
+alter table interments add section_id int unsigned after section;
+alter table interments add foreign key (section_id) references sections(id);
+
+update interments,sections
+set section_id=sections.id
+where interments.section=sections.code
+and interments.cemetery_id=sections.cemetery_id;
+
+alter table interments drop section;

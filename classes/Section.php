@@ -4,11 +4,14 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
-class Cemetery
+class Section
 {
 	private $id;
+	private $cemetery_id;
+	private $code;
 	private $name;
-	private $googleMapURL;
+
+	private $cemetery;
 
 	/**
 	 * Populates the object with data
@@ -30,12 +33,7 @@ class Cemetery
 			}
 			else {
 				$zend_db = Database::getConnection();
-				if (ctype_digit($id)) {
-					$sql = 'select * from cemeteries where id=?';
-				}
-				else {
-					$sql = 'select * from cemeteries where name=?';
-				}
+				$sql = 'select * from sections where id=?';
 				$result = $zend_db->fetchRow($sql,array($id));
 			}
 
@@ -47,7 +45,7 @@ class Cemetery
 				}
 			}
 			else {
-				throw new Exception('cemeteries/unknownCemetery');
+				throw new Exception('sections/unknownSection');
 			}
 		}
 		else {
@@ -63,8 +61,8 @@ class Cemetery
 	public function validate()
 	{
 		// Check for required fields here.  Throw an exception if anything is missing.
-		if (!$this->name) {
-			throw new Exception('missingName');
+		if (!$this->cemetery_id || !$this->code) {
+			throw new Excepction('missingRequiredFields');
 		}
 	}
 
@@ -76,8 +74,9 @@ class Cemetery
 		$this->validate();
 
 		$data = array();
-		$data['name'] = $this->name;
-		$data['googleMapURL'] = $this->googleMapURL ? $this->googleMapURL : null;
+		$data['cemetery_id'] = $this->cemetery_id;
+		$data['code'] = $this->code;
+		$data['name'] = $this->name ? $this->name : null;
 
 		if ($this->id) {
 			$this->update($data);
@@ -90,14 +89,14 @@ class Cemetery
 	private function update($data)
 	{
 		$zend_db = Database::getConnection();
-		$zend_db->update('cemeteries',$data,"id='{$this->id}'");
+		$zend_db->update('sections',$data,"id='{$this->id}'");
 	}
 
 	private function insert($data)
 	{
 		$zend_db = Database::getConnection();
-		$zend_db->insert('cemeteries',$data);
-		$this->id = $zend_db->lastInsertId('cemeteries','id');
+		$zend_db->insert('sections',$data);
+		$this->id = $zend_db->lastInsertId('sections','id');
 	}
 
 	//----------------------------------------------------------------
@@ -113,6 +112,22 @@ class Cemetery
 	}
 
 	/**
+	 * @return int
+	 */
+	public function getCemetery_id()
+	{
+		return $this->cemetery_id;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getCode()
+	{
+		return $this->code;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function getName()
@@ -121,15 +136,39 @@ class Cemetery
 	}
 
 	/**
-	 * @return string
+	 * @return Cemetery
 	 */
-	public function getGoogleMapURL()
+	public function getCemetery()
 	{
-		return $this->googleMapURL;
+		if ($this->cemetery_id) {
+			if (!$this->cemetery) {
+				$this->cemetery = new Cemetery($this->cemetery_id);
+			}
+			return $this->cemetery;
+		}
+		return null;
 	}
+
 	//----------------------------------------------------------------
 	// Generic Setters
 	//----------------------------------------------------------------
+
+	/**
+	 * @param int $int
+	 */
+	public function setCemetery_id($int)
+	{
+		$this->cemetery = new Cemetery($int);
+		$this->cemetery_id = $int;
+	}
+
+	/**
+	 * @param string $string
+	 */
+	public function setCode($string)
+	{
+		$this->code = trim($string);
+	}
 
 	/**
 	 * @param string $string
@@ -140,53 +179,21 @@ class Cemetery
 	}
 
 	/**
-	 * @param string $string
+	 * @param Cemetery $cemetery
 	 */
-	public function setGoogleMapURL($string)
+	public function setCemetery($cemetery)
 	{
-		$this->googleMapURL = trim($string);
+		$this->cemetery_id = $cemetery->getId();
+		$this->cemetery = $cemetery;
 	}
+
+
 	//----------------------------------------------------------------
 	// Custom Functions
 	// We recommend adding all your custom code down here at the bottom
 	//----------------------------------------------------------------
 	public function __toString()
 	{
-		return $this->name;
-	}
-
-	/**
-	 * Returns all the available sections for this cemetery
-	 *
-	 * @return array
-	 */
-	public function getSections()
-	{
-		return new SectionList(array('cemetery_id'=>$this->id));
-	}
-
-	/**
-	 * @return URL
-	 */
-	public function getURL()
-	{
-		return new URL(BASE_URL.'/cemeteries/viewCemetery.php?cemetery_id='.$this->id);
-	}
-
-	/**
-	 * Returns the URL to the map image for this cemetery
-	 *
-	 * Available map types are:
-	 * 		full, thumb - for the main map
-	 * 		highlight, zoom - for the section maps
-	 *
-	 * @return string
-	 */
-	public function getMap($type="full")
-	{
-		$mapDirectory = "images/cemeteries/{$this->id}";
-		$filename = $type=='full' ? 'map.jpg' : 'map_thumb.jpg';
-
-		return BASE_URL."/$mapDirectory/$filename";
+		return $this->name ? $this->name : $this->code;
 	}
 }

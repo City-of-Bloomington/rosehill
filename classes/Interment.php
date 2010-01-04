@@ -441,24 +441,6 @@ class Interment
 	}
 
 	/**
-	 * Returns the list of available sections
-	 *
-	 * @return array
-	 */
-	public static function getSections(Cemetery $cemetery=null)
-	{
-		$zend_db = Database::getConnection();
-		$select = new Zend_Db_Select($zend_db);
-		$select->distinct()->from('interments','section');
-		$select->where('section is not null');
-		if ($cemetery) {
-			$select->where('cemetery_id=?',$cemetery->getId());
-		}
-		$select->order(array('section'));
-		return $zend_db->fetchCol($select);
-	}
-
-	/**
 	 * @return string
 	 */
 	public function getFullname()

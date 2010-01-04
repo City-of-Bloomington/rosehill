@@ -31,7 +31,11 @@
 					";
 				}
 				$name = View::escape($cemetery->getName());
-				echo "<li>$editButton $name</li>";
+				echo "
+				<li>$editButton
+					<a href=\"{$cemetery->getURL()}\">$name</a>
+				</li>
+				";
 			}
 		?>
 	</ul>

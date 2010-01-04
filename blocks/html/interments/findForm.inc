@@ -30,11 +30,11 @@
 							<option value=\"\">All</option>
 				";
 					foreach ($cemetery->getSections() as $section) {
-						$section = View::escape($section);
-						$selected = (isset($_GET[$fieldname]) && $_GET[$fieldname]==$section)
+						$selected = (isset($_GET[$fieldname]) && $_GET[$fieldname]==$section->getId())
 									? 'selected="selected"'
 									: '';
-						echo "<option $selected>$section</option>";
+						$name = View::escape($section);
+						echo "<option value=\"{$section->getId()}\" $selected>$name</option>";
 					}
 				echo "
 						</select>

@@ -38,6 +38,14 @@ create table cemeteries (
 	googleMapURL varchar(255)
 ) engine=InnoDB;
 
+create table sections (
+	id int unsigned not null primary key auto_increment,
+	cemetery_id int unsigned not null,
+	code varchar(5) not null,
+	name varchar(128),
+	foreign key (cemetery_id) references cemeteries(id)
+) engine=InnoDB;
+
 create table deeds (
 	id int unsigned not null primary key auto_increment,
 	section varchar(5),
@@ -57,7 +65,7 @@ create table deeds (
 
 create table interments (
 	id int(11) unsigned not null primary key auto_increment,
-	section varchar(5),
+	section_id int unsigned,
 	lot varchar(5),
 	book varchar(4),
 	pageNumber varchar(5),
@@ -72,5 +80,6 @@ create table interments (
 	cemetery_id int unsigned,
 	notes text,
 	lot2 varchar(5),
+	foreign key (section_id) references sections(id),
 	foreign key (cemetery_id) references cemeteries(id)
 ) engine=InnoDB;

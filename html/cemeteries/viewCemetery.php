@@ -10,7 +10,7 @@ try {
 	if (!isset($_GET['cemetery_id']) || !$_GET['cemetery_id']) {
 		throw new Exception('cemeteries/unknownCemetery');
 	}
-	$cemetery = new Cemeter($_GET['cemetery_id']);
+	$cemetery = new Cemetery($_GET['cemetery_id']);
 }
 catch (Exception $e) {
 	$_SESSION['errorMessages'][] = $e;

@@ -196,4 +196,41 @@ class Section
 	{
 		return $this->name ? $this->name : $this->code;
 	}
+
+	private function getMapDirectory()
+	{
+		return 'images/cemeteries/'.$this->cemetery_id;
+	}
+
+	/**
+	 * Returns the URL to the map image
+	 *
+	 * @param string $type	Either 'highlight' or 'zoom'
+	 * @return string
+	 */
+	public function getMap($type='highlight')
+	{
+		$imageDir = $this->getMapDirectory();
+		$type = $type=='highlight' ? 'highlight' : 'zoom';
+
+		$glob = glob(APPLICATION_HOME."/html/$imageDir/$type/{$this->id}.*");
+		if (count($glob)) {
+			$filename = basename($glob[0]);
+			return BASE_URL."/$imageDir/$type/$filename";
+		}
+	}
+
+	/**
+	 * @param array|string $file  Either an entry from $_FILES or a path to a file
+	 */
+	public function saveMap($file,$type)
+	{
+		$imageDir = $this->getMapDirectory();
+		$type = $type=='highlight' ? 'highlight' : 'zoom';
+
+		$directory = APPLICATION_HOME."/html/$imageDir/$type";
+
+		echo "Saving $type map to $directory\n";
+		Map::saveFile($directory,$file,$this->id);
+	}
 }

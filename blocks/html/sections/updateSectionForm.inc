@@ -7,7 +7,7 @@
  */
 ?>
 <h1>Update Section</h1>
-<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
+<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" enctype="multipart/form-data">
 	<fieldset><legend>Section Info</legend>
 		<input name="section_id" type="hidden" value="<?php echo $this->section->getId(); ?>" />
 		<table>
@@ -29,5 +29,28 @@
 				onclick="document.location.href='<?php echo $this->section->getCemetery()->getURL(); ?>';">
 			Cancel
 		</button>
+	</fieldset>
+
+	<fieldset><legend>Maps</legend>
+		<div>
+			<label for="highlight_map">Highlight Map</lable>
+			<input type="file" name="highlight_map" id="highlight_map" />
+		</div>
+		<?php
+			$highlight = $this->section->getMap('highlight');
+			if ($highlight) {
+				echo "<div><img src=\"$highlight\" /></div>";
+			}
+		?>
+		<div>
+			<label for="zoom_map">Zoomed Map</lable>
+			<input type="file" name="zoom_map" id="zoom_map" />
+		</div>
+		<?php
+			$zoom = $this->section->getMap('zoom');
+			if ($zoom) {
+				echo "<div><img src=\"$zoom\" /></div>";
+			}
+		?>
 	</fieldset>
 </form>

@@ -7,7 +7,7 @@
 class Interment
 {
 	private $id;
-	private $section;
+	private $section_id;
 	private $lot;
 	private $book;
 	private $pageNumber;
@@ -23,6 +23,7 @@ class Interment
 	private $notes;
 	private $lot2;
 
+	private $section;
 	private $cemetery;
 
 	/**
@@ -87,7 +88,7 @@ class Interment
 		$this->validate();
 
 		$data = array();
-		$data['section'] = $this->section ? $this->section : null;
+		$data['section_id'] = $this->section_id ? $this->section_id : null;
 		$data['lot'] = $this->lot ? $this->lot : null;
 		$data['book'] = $this->book ? $this->book : null;
 		$data['pageNumber'] = $this->pageNumber ? $this->pageNumber : null;
@@ -137,11 +138,11 @@ class Interment
 	}
 
 	/**
-	 * @return string
+	 * @return int
 	 */
-	public function getSection()
+	public function getSection_id()
 	{
-		return $this->section;
+		return $this->section_id;
 	}
 
 	/**
@@ -281,16 +282,40 @@ class Interment
 		}
 		return null;
 	}
+
+	/**
+	 * @return Section
+	 */
+	public function getSection()
+	{
+		if ($this->section_id) {
+			if (!$this->section) {
+				$this->section = new Section($this->section_id);
+			}
+			return $this->section;
+		}
+		return null;
+	}
 	//----------------------------------------------------------------
 	// Generic Setters
 	//----------------------------------------------------------------
 
 	/**
-	 * @param string $string
+	 * @param int $int
 	 */
-	public function setSection($string)
+	public function setSection_id($int)
 	{
-		$this->section = trim($string);
+		$this->section = new Section($int);
+		$this->section_id = $int;
+	}
+
+	/**
+	 * @param Section $section
+	 */
+	public function setSection($section)
+	{
+		$this->section_id = $section->getId();
+		$this->section = $section;
 	}
 
 	/**
@@ -427,7 +452,6 @@ class Interment
 		$this->lot2 = trim($string);
 	}
 
-
 	//----------------------------------------------------------------
 	// Custom Functions
 	// We recommend adding all your custom code down here at the bottom
@@ -456,21 +480,5 @@ class Interment
 			$name[] = $this->lastname;
 		}
 		return implode(' ',$name);
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getSectionMapURL($section,$type='highlight')
-	{
-		$section = preg_replace('/[^a-z\-]/','',strtolower($section));
-		$type = $type=='highlight' ? 'highlight' : 'zoom';
-
-		$mapDirectory = "images/cemeteries/{$this->cemetery_id}";
-		$filename = "$type/$section.jpg";
-
-		if (file_exists(APPLICATION_HOME."/html/$mapDirectory/$filename")) {
-			return BASE_URL."$mapDirectory/$filename";
-		}
 	}
 }

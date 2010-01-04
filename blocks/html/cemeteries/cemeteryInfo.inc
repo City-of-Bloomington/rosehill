@@ -44,6 +44,7 @@ echo "
 		<tr><td>$editButton</td>
 			<td>$code</td>
 			<td>$name</td>
+			<td></td>
 		</tr>
 		";
 	}

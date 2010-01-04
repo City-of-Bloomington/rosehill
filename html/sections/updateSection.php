@@ -12,18 +12,29 @@ if (!userIsAllowed('Sections')) {
 }
 
 $section = new Section($_REQUEST['section_id']);
-if (isset($_POST['section'])) {
+if (isset($_POST['section_id'])) {
 	$section->setCode($_POST['code']);
 	$section->setName($_POST['name']);
 
 	try {
 		$section->save();
-		header('Location: '.$section->getCemetery()->getURL());
+		if (isset($_FILES)) {
+			echo "Found files\n";
+			print_r($_FILES);
+			if (isset($_FILES['highlight_map']) && $_FILES['highlight_map']['tmp_name']) {
+				$section->saveMap($_FILES['highlight_map'],'highlight');
+			}
+			if (isset($_FILES['zoom_map']) && $_FILES['zoom_map']['tmp_name']) {
+				$section->saveMap($_FILES['zoom_map'],'zoom');
+			}
+		}
+		#header('Location: '.$section->getCemetery()->getURL());
 		exit();
 	}
 	catch (Exception $e) {
 		$_SESSION['errorMessages'][] = $e;
 	}
+
 }
 
 $template = new Template();

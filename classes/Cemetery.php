@@ -178,7 +178,6 @@ class Cemetery
 	 *
 	 * Available map types are:
 	 * 		full, thumb - for the main map
-	 * 		highlight, zoom - for the section maps
 	 *
 	 * @return string
 	 */

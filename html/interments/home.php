@@ -18,7 +18,13 @@ $search = array();
 foreach ($_GET as $field=>$value) {
 	if ($value) {
 		if (false !== strpos($field,'section')) {
-			$search['section'] = $value;
+			try {
+				$section = new Section($value);
+				$search['section_id'] = $section->getId();
+			}
+			catch (Exception $e) {
+				// Just ignore any unknown sections
+			}
 		}
 		else {
 			if (in_array($field,$knownFields)) {

@@ -4,7 +4,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
  * @param Interment $this->interment
  */
-$mapURL = BASE_URL.'/interments/map.php?interment_id='.$this->interment->getId();
+$mapURL = BASE_URL.'/interments/maps.php?interment_id='.$this->interment->getId();
 $cemetery = $this->interment->getCemetery();
 $name = View::escape($cemetery->getName());
 ?>

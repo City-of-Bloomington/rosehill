@@ -9,10 +9,11 @@ $return_url = isset($this->return_url) ? $this->return_url : BASE_URL.'/intermen
 ?>
 <h2>Add Interment</h2>
 <form method="post" action="<?php echo BASE_URL; ?>/interments/addInterment.php">
-	<fieldset><legend>Interment Info</legend>
+	<fieldset>
 		<input type="hidden" name="return_url" value="<?php echo $return_url; ?>" />
 
 		<table>
+			<tbody>
 			<tr><td><label for="interment-cemetery_id" class="required">Cemetery</label></td>
 				<td><select name="interment[cemetery_id]" id="interment-cemetery_id"
 						onchange="COB.populateSections(this.options[this.selectedIndex].value,'interment-section_id','<?php echo BASE_URL; ?>')">
@@ -79,10 +80,11 @@ $return_url = isset($this->return_url) ? $this->return_url : BASE_URL.'/intermen
 					</select>
 				</td>
 			</tr>
+			</tbody>
 		</table>
 
 		<div><label for="interment-notes">Notes</label></div>
-		<div><textarea name="interment[notes]" id="interment-notes" rows="3" cols="60"></textarea></div>
+		<div><textarea name="interment[notes]" id="interment-notes" rows="3" cols="40"></textarea></div>
 
 		<button type="submit" class="submit">Submit</button>
 		<button type="button" class="cancel" onclick="document.location.href='<?php echo $return_url; ?>';">

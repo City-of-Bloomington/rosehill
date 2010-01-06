@@ -16,9 +16,9 @@ foreach ($_GET as $field=>$value) {
 }
 
 
-
-// Only the HTML version will include the findForm, addForm, and about page.
 $template = isset($_GET['format']) ? new Template('default',$_GET['format']) : new Template();
+
+// Only the HTML version will include the findForm, addForm, and the about page.
 if ($template->outputFormat=='html') {
 	$template->blocks[] = new Block('interments/findForm.inc');
 
@@ -33,16 +33,23 @@ if ($template->outputFormat=='html') {
 
 
 // All output formats will include the list of interments
+$order = isset($_GET['sort']) ? $_GET['sort'] : null;
 if (count($search)) {
-	$order = isset($_GET['sort']) ? $_GET['sort'] : null;
 	if ($template->outputFormat=='html') {
 		$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 		$intermentList = new IntermentList($search,$order,50,$currentPage);
 	}
 	else {
 		$intermentList = new IntermentList();
-		$intermentList->find();
+		$intermentList->find($search,$order);
 	}
+	$template->blocks[] = new Block('interments/intermentList.inc',
+									array('intermentList'=>$intermentList));
+}
+elseif ($template->outputFormat!='html') {
+	// Since they're using the service, allow them to download the entire data set
+	$intermentList = new IntermentList();
+	$intermentList->find(null,$order);
 	$template->blocks[] = new Block('interments/intermentList.inc',
 									array('intermentList'=>$intermentList));
 }

@@ -8,13 +8,16 @@
  */
 $previousSort = isset($_GET['sort']) ? $_GET['sort'] : 'deceasedDate';
 $url = new URL($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+$return_url = $url->__toString();
 ?>
 <div class="interfaceBox">
 	<h1>
 		<?php
 			if (userIsAllowed('Interments')) {
+				$addURL = new URL(BASE_URL.'/interments/addInterment.php');
+				$addURL->return_url = $return_url;
 				echo "
-				<button type=\"button\" class=\"add\" onclick=\"document.location.href='".BASE_URL."/interments/addInterment.php';\">
+				<button type=\"button\" class=\"add\" onclick=\"document.location.href='$addURL';\">
 					Add
 				</button>
 				";
@@ -49,10 +52,11 @@ $url = new URL($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
 			foreach ($this->intermentList as $interment) {
 				$editButton = '';
 				if (userIsAllowed('Interments')) {
-					$url = new URL(BASE_URL.'/interments/updateInterment.php');
-					$url->interment_id = $interment->getId();
+					$editURL = new URL(BASE_URL.'/interments/updateInterment.php');
+					$editURL->interment_id = $interment->getId();
+					$editURL->return_url = $return_url;
 					$editButton = "
-					<button type=\"button\" class=\"edit\" onclick=\"document.location.href='$url';\">
+					<button type=\"button\" class=\"edit\" onclick=\"document.location.href='$editURL';\">
 						Edit
 					</button>
 					";

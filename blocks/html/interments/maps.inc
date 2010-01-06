@@ -34,6 +34,7 @@ if ($zoomed_map) {
 }
 else {
 	echo "
+	<h2>Close-up of Section</h2>
 	<p>
 		We do not have information for this burial or we do not have the section currently mapped.
 	</p>

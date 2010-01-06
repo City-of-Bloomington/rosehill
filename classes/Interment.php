@@ -77,9 +77,10 @@ class Interment
 	public function validate()
 	{
 		// Check for required fields here.  Throw an exception if anything is missing.
-
+		if (!$this->cemetery_id) {
+			throw new Exception('missingRequiredFields');
+		}
 	}
-
 	/**
 	 * Saves this record back to the database
 	 */
@@ -100,7 +101,7 @@ class Interment
 		$data['lastResidence'] = $this->lastResidence ? $this->lastResidence : null;
 		$data['age'] = $this->age ? $this->age : null;
 		$data['sex'] = $this->sex ? $this->sex : null;
-		$data['cemetery_id'] = $this->cemetery_id ? $this->cemetery_id : null;
+		$data['cemetery_id'] = $this->cemetery_id;
 		$data['notes'] = $this->notes ? $this->notes : null;
 		$data['lot2'] = $this->lot2 ? $this->lot2 : null;
 

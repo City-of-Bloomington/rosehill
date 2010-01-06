@@ -36,7 +36,7 @@ foreach ($_GET as $field=>$value) {
 
 if (count($search)) {
 	$order = isset($_GET['sort']) ? $_GET['sort'] : null;
-	$intermentList = new IntermentList($search,$order,20,$currentPage);
+	$intermentList = new IntermentList($search,$order,50,$currentPage);
 }
 
 
@@ -45,6 +45,13 @@ $template->blocks[] = new Block('interments/findForm.inc');
 if (isset($intermentList)) {
 	$template->blocks[] = new Block('interments/intermentList.inc',
 									array('intermentList'=>$intermentList));
+}
+else {
+	if (userIsAllowed('Interments')) {
+		$return_url = new URL($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+		$template->blocks[] = new Block('interments/addIntermentForm.inc',
+										array('return_url'=>$return_url));
+	}
 }
 $template->blocks['panel-one'][] = new Block('about.inc');
 echo $template->render();

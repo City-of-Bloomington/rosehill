@@ -18,6 +18,13 @@ catch (Exception $e) {
 	exit();
 }
 
-$template = new Template();
+
+
+if (isset($_GET['format'])) {
+	$template = new Template('default',$_GET['format']);
+}
+else {
+	$template = new Template();
+}
 $template->blocks[] = new Block('cemeteries/cemeteryInfo.inc',array('cemetery'=>$cemetery));
 echo $template->render();

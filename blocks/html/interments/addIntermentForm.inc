@@ -15,7 +15,7 @@ $return_url = isset($this->return_url) ? $this->return_url : BASE_URL.'/intermen
 		<table>
 			<tr><td><label for="interment-cemetery_id" class="required">Cemetery</label></td>
 				<td><select name="interment[cemetery_id]" id="interment-cemetery_id"
-						onchange="populateSections(this.options[this.selectedIndex].value)">
+						onchange="COB.populateSections(this.options[this.selectedIndex].value,'interment-section_id','<?php echo BASE_URL; ?>')">
 						<option></option>
 						<?php
 							$list = new CemeteryList();
@@ -90,27 +90,3 @@ $return_url = isset($this->return_url) ? $this->return_url : BASE_URL.'/intermen
 		</button>
 	</fieldset>
 </form>
-<script type="text/javascript">
-function populateSections(cemetery_id) {
-	var url = '<?php echo BASE_URL; ?>/cemeteries/viewCemetery.php?format=json;cemetery_id=' + cemetery_id;
-
-	YAHOO.util.Connect.asyncRequest('GET',url,{
-		success : function (o) {
-			var select = document.getElementById('interment-section_id');
-			select.innerHTML = '';
-			select.appendChild(document.createElement('option'));
-
-			var sections = YAHOO.lang.JSON.parse(o.responseText).sections
-			for (i in sections) {
-				var option = document.createElement('option');
-				option.setAttribute('value',sections[i].id);
-				option.appendChild(document.createTextNode(sections[i].code));
-				select.appendChild(option);
-			}
-		},
-
-		failure : function (o) {
-		}
-	});
-}
-</script>

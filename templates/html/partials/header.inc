@@ -15,5 +15,7 @@
 	<script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/connection/connection-min.js"></script>
 	<script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/datasource/datasource-min.js"></script>
 
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>/js/functions.js"></script>
+
 	<title>Cemeteries</title>
 </head>

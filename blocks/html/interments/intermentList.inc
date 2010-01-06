@@ -11,7 +11,7 @@ $url = new URL($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
 $return_url = $url->__toString();
 ?>
 <div class="interfaceBox">
-	<h1>
+	<h2>
 		<?php
 			if (userIsAllowed('Interments')) {
 				$addURL = new URL(BASE_URL.'/interments/addInterment.php');
@@ -24,7 +24,7 @@ $return_url = $url->__toString();
 			}
 		?>
 		Interments
-	</h1>
+	</h2>
 	<table>
 		<thead>
 			<tr><th></th>

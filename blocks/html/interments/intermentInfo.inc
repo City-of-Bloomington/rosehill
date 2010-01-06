@@ -47,3 +47,9 @@ $section_lot = View::escape(implode(', ',$section_lot));
 		<td><?php echo $section_lot; ?></td>
 	</tr>
 </table>
+<?php
+	if (userIsAllowed('Interments')) {
+		$notes = View::escape($this->interment->getNotes());
+		echo "<p>$notes</p>";
+	}
+?>

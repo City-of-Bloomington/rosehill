@@ -20,7 +20,12 @@ $template = isset($_GET['format']) ? new Template('default',$_GET['format']) : n
 
 // Only the HTML version will include the findForm, addForm, and the about page.
 if ($template->outputFormat=='html') {
-	$template->blocks[] = new Block('interments/findForm.inc');
+	if (!count($search)) {
+		$template->blocks[] = new Block('interments/findForm.inc');
+	}
+	else {
+		$template->blocks[] = new Block('interments/findForm-skinny.inc');
+	}
 
 	if (userIsAllowed('Interments') && !count($search)) {
 		$return_url = new URL($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);

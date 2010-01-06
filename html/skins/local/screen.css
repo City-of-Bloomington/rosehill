@@ -1,11 +1,13 @@
-#banner .loginForm { position:absolute; top:5px; right:5px; color:white; }
-#banner .loginForm h1 { display:none; }
-#banner .loginForm th label { color:white; }
-#banner .loginForm fieldset { border:none; margin:0; padding:0; }
-#banner .loginForm legend { display:none; }
-#banner .loginForm button {display:inline; }
-#banner .loginForm a { font-weight:bold; color:blue; }
+.loginForm { position:absolute; top:5px; right:5px; color:white; }
+.loginForm h1 { display:none; }
+.loginForm th label { color:black; }
+.loginForm fieldset { border:none; margin:0; padding:0; }
+.loginForm legend { display:none; }
+.loginForm button {display:none; }
+.loginForm a { font-weight:bold; color:blue; }
+
 .searchForm {}
+
 #burialLinks td { vertical-align:middle; }
 #aboutCemeteries { float:left; width:180px;  }
 #cemeteryImages { float:right; width:200px; }
@@ -16,7 +18,7 @@
 
 .searchInterment th { text-align:left; width:75px; }
 
-table { margin:8px 0; overflow:auto; }
+table { margin:5px 0; overflow:auto; }
 tr { }
 td label { font-weight:normal; color:#666666; }
 td { padding:4px 4px 2px 4px; vertical-align:top; border:0; }
@@ -32,3 +34,5 @@ th a:link,th a:visited { color:#3366cc; background-color:inherit; }
 form table { border:none; }
 
 a.sorting { }
+
+.menuBar li {padding-left:10px; }

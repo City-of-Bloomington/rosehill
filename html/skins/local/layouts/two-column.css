@@ -1,5 +1,5 @@
 #panel-container { width:100%; overflow:auto; padding-left:10px; }
-#panel-one { width:490px; float:right; }
+#panel-one { width:490px; float:right; padding-left:10px; }
 #content-panel { margin-right:495px; border-right:1px solid #999999; width:470px; }
 #panel-two { clear:right; width:100%; }
 

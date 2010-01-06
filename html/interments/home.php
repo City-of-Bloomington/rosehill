@@ -35,7 +35,8 @@ foreach ($_GET as $field=>$value) {
 }
 
 if (count($search)) {
-	$intermentList = new IntermentList($search,20,$currentPage);
+	$order = isset($_GET['sort']) ? $_GET['sort'] : null;
+	$intermentList = new IntermentList($search,$order,20,$currentPage);
 }
 
 

@@ -28,11 +28,16 @@ class IntermentList extends ZendDbResultIterator
 	 * @param int $itemsPerPage Turns on Pagination
 	 * @param int $currentPage
 	 */
-	public function __construct($fields=null,$itemsPerPage=null,$currentPage=null)
+	public function __construct($fields=null,$order=null,$itemsPerPage=null,$currentPage=null)
 	{
 		parent::__construct($itemsPerPage,$currentPage);
 		if (is_array($fields)) {
-			$this->find($fields);
+			if ($order) {
+				$this->find($fields,$order);
+			}
+			else {
+				$this->find($fields);
+			}
 		}
 	}
 
@@ -44,7 +49,7 @@ class IntermentList extends ZendDbResultIterator
 	 * @param int $limit
 	 * @param string|array $groupBy Multi-column group by should be given as an array
 	 */
-	public function find($fields=null,$order='id',$limit=null,$groupBy=null)
+	public function find($fields=null,$order='deceasedDate',$limit=null,$groupBy=null)
 	{
 		$this->select->from('interments');
 

@@ -14,8 +14,7 @@
 .pageNavigation ul{ display:inline; }
 .pageNavigation li { padding-left:5px; }
 
-
-.searchInterment th {text-align:left; width:75px; }
+.searchInterment th { text-align:left; width:75px; }
 
 table { margin:8px 0; overflow:auto; }
 tr { }
@@ -31,3 +30,5 @@ tbody th {
 	}
 th a:link,th a:visited { color:#3366cc; background-color:inherit; }
 form table { border:none; }
+
+a.sorting { }

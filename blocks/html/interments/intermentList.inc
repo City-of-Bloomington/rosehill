@@ -4,7 +4,10 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  * @param IntermentList $this->intermentList
+ * @param GET sort
  */
+$previousSort = isset($_GET['sort']) ? $_GET['sort'] : 'deceasedDate';
+$url = new URL($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
 ?>
 <div class="interfaceBox">
 	<h1>
@@ -22,9 +25,21 @@
 	<table>
 		<thead>
 			<tr><th></th>
-				<th>Last Name</th>
-				<th>First Name</th>
-				<th>Date of Death</th>
+				<th><?php
+						$url->sort = $previousSort=='lastname' ? 'lastname desc' : 'lastname';
+						echo "<a href=\"$url\" class=\"sorting\">Last Name</a>";
+					?>
+				</th>
+				<th><?php
+						$url->sort = $previousSort=='firstname' ? 'firstname desc' : 'firstname';
+						echo "<a href=\"$url\" class=\"sorting\">First Name</a>";
+					?>
+				</th>
+				<th><?php
+						$url->sort = $previousSort=='deceasedDate' ? 'deceasedDate desc' : 'deceasedDate';
+						echo "<a href=\"$url\" class=\"sorting\">Date of Death</a>";
+					?>
+				</th>
 				<th>Cemetery</th>
 				<th>Section &amp; Lot</th>
 			</tr>

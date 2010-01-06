@@ -5,13 +5,18 @@
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  * @param Interment $this->interment
  */
+$highlighted_map = '';
+$zoomed_map = '';
+if ($this->interment->getSection_id()) {
+	$highlighted_map = $this->interment->getSection()->getMap();
+	$zoomed_map = $this->interment->getSection()->getMap('zoom');
+}
+
 echo "
 <p class=\"back\">
 	<a href=\"{$this->interment->getURL()}\">Back to Interment Details</a>
 </p>
 ";
-
-$highlighted_map = $this->interment->getSection()->getMap();
 if ($highlighted_map) {
 	echo "
 	<h2>Entire Cemetery with Section Highlighted</h2>
@@ -25,7 +30,6 @@ else {
 	";
 }
 
-$zoomed_map = $this->interment->getSection()->getMap('zoom');
 if ($zoomed_map) {
 	echo "
 	<h2>Close-up of Section</h2>

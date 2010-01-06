@@ -5,7 +5,7 @@
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
 ?>
-<h1>Search Burial Records</h1>
+<h2>Search Burial Records</h2>
 <form method="get" action="<?php echo BASE_URL; ?>/interments">
 	<table>
 		<tr><td><label for="lastname">Last Name</label></td>
@@ -21,7 +21,7 @@
 		<tr><td><label for="cemetery_id">Cemetery</label></td>
 			<td><select name="cemetery_id" id="cemetery_id"
 					onchange="COB.populateSections(this.options[this.selectedIndex].value,'section_id','<?php echo BASE_URL; ?>')">
-					<option></option>
+					<option value="">Any Cemetery</option>
 					<?php
 						$cemeteries = new CemeteryList();
 						$cemeteries->find();
@@ -38,7 +38,7 @@
 		</tr>
 		<tr><td><label for="section_id">Section</label></td>
 			<td><select name="section_id" id="section_id">
-					<option></option>
+					<option value="">Any Section</option>
 					<?php
 						if (isset($_GET['cemetery_id'])) {
 							$sections = new SectionList(array('cemetery_id'=>$_GET['cemetery_id']));

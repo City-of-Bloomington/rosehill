@@ -7,7 +7,7 @@
  */
 $return_url = isset($this->return_url) ? $this->return_url : BASE_URL.'/interments';
 ?>
-<h1>Add Interment</h1>
+<h2>Add Interment</h2>
 <form method="post" action="<?php echo BASE_URL; ?>/interments/addInterment.php">
 	<fieldset><legend>Interment Info</legend>
 		<input type="hidden" name="return_url" value="<?php echo $return_url; ?>" />

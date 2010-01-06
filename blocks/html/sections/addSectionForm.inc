@@ -6,7 +6,7 @@
  * @param Cemetery $this->cemetery
  */
 ?>
-<h1>Add Section</h1>
+<h2>Add Section</h2>
 <form method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" enctype="multipart/form-data">
 	<fieldset><legend>Section Info</legend>
 		<input type="hidden" name="cemetery_id" value="<?php echo $this->cemetery->getId(); ?>" />

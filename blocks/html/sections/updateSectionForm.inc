@@ -6,7 +6,7 @@
  * @param Section $this->section
  */
 ?>
-<h1>Update Section</h1>
+<h2>Update Section</h2>
 <form method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" enctype="multipart/form-data">
 	<fieldset><legend>Section Info</legend>
 		<input name="section_id" type="hidden" value="<?php echo $this->section->getId(); ?>" />

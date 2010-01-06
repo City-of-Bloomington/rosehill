@@ -6,7 +6,7 @@
  * @param Person $this->person
  */
 ?>
-<h1>Update Person</h1>
+<h2>Update Person</h2>
 <form method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
 	<fieldset><legend>Person Info</legend>
 		<input name="person_id" type="hidden" value="<?php echo $this->person->getId(); ?>" />

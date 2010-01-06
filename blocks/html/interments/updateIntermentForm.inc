@@ -8,7 +8,7 @@
  */
 $return_url = $this->return_url ? $this->return_url : BASE_URL.'/interments';
 ?>
-<h1>Update Interment</h1>
+<h2>Update Interment</h2>
 <form method="post" action="<?php echo BASE_URL; ?>/interments/updateInterment.php">
 	<fieldset><legend>Interment Info</legend>
 		<input name="interment_id" type="hidden" value="<?php echo $this->interment->getId(); ?>" />

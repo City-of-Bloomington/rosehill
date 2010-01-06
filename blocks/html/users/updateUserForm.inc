@@ -6,7 +6,7 @@
  * @param User $this->user
  */
 ?>
-<h1>Edit <?php echo $this->user->getUsername(); ?></h1>
+<h2>Edit <?php echo $this->user->getUsername(); ?></h2>
 <form method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
 	<fieldset><legend>Login Info</legend>
 		<input name="user_id" type="hidden" value="<?php echo $this->user->getId(); ?>" />

@@ -7,7 +7,7 @@
  */
 ?>
 <div class="interfaceBox">
-	<h1><?php
+	<h2><?php
 			if (userIsAllowed('Users')) {
 				echo "
 				<button type=\"button\" class=\"add\" onclick=\"document.location.href='".BASE_URL."/people/addPerson.php';\">
@@ -17,7 +17,7 @@
 			}
 		?>
 		People
-	</h1>
+	</h2>
 	<table>
 		<?php
 			foreach ($this->personList as $person) {

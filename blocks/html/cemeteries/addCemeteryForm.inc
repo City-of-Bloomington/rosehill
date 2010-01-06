@@ -5,7 +5,7 @@
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
 ?>
-<h1>Add Cemetery</h1>
+<h2>Add Cemetery</h2>
 <form method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" enctype="multipart/form-data">
 	<fieldset><legend>Cemetery Info</legend>
 		<table>

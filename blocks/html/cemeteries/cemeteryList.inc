@@ -6,7 +6,7 @@
  */
 ?>
 <div class="interfaceBox">
-	<h1>
+	<h2>
 		<?php
 			if (userIsAllowed('Cemeteries')) {
 				echo "
@@ -17,7 +17,7 @@
 			}
 		?>
 		Cemeteries
-	</h1>
+	</h2>
 	<ul><?php
 			foreach ($this->cemeteryList as $cemetery) {
 				$editButton = '';

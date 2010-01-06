@@ -6,7 +6,7 @@
  @param Deed $this->deed
  */
 ?>
-<h1>Update Deed</h1>
+<h2>Update Deed</h2>
 <form method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
 	<fieldset><legend>Deed Info</legend>
 		<input name="deed_id" type="hidden" value="<?php echo $this->deed->getId(); ?>" />

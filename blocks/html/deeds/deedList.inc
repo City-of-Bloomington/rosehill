@@ -7,7 +7,7 @@
  */
 ?>
 <div class="interfaceBox">
-	<h1>
+	<h2>
 		<?php
 			if (userIsAllowed('Deeds')) {
 				echo "
@@ -18,7 +18,7 @@
 			}
 		?>
 		Deeds
-	</h1>
+	</h2>
 	<table>
 		<thead>
 			<tr><th></th>

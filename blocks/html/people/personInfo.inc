@@ -17,7 +17,7 @@ if (!$username && userIsAllowed('Users')) {
 
 $name = View::escape($this->person->getFullname());
 echo "
-<h1>$name</h1>
+<h2>$name</h2>
 <table>
 	<tr><th>Username</th>
 		<td>$username</td>

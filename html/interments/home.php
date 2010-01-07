@@ -32,7 +32,6 @@ if ($template->outputFormat=='html') {
 		$template->blocks[] = new Block('interments/addIntermentForm.inc',
 										array('return_url'=>$return_url));
 	}
-	$template->blocks['panel-one'][] = new Block('about.inc');
 }
 
 

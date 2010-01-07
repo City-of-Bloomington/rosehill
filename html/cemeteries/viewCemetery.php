@@ -19,12 +19,8 @@ catch (Exception $e) {
 }
 
 
-
-if (isset($_GET['format'])) {
-	$template = new Template('default',$_GET['format']);
-}
-else {
-	$template = new Template();
-}
+$template = isset($_GET['format'])
+		? new Template('default',$_GET['format'])
+		: $template = new Template();
 $template->blocks[] = new Block('cemeteries/cemeteryInfo.inc',array('cemetery'=>$cemetery));
 echo $template->render();

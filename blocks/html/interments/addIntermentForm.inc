@@ -84,7 +84,9 @@ $return_url = isset($this->return_url) ? $this->return_url : BASE_URL.'/intermen
 		</table>
 
 		<div><label for="interment-notes">Notes</label></div>
-		<div><textarea name="interment[notes]" id="interment-notes" rows="3" cols="40"></textarea></div>
+		<div>
+			<textarea name="interment[notes]" id="interment-notes" rows="3" cols="40"></textarea>
+		</div>
 
 		<button type="submit" class="submit">Submit</button>
 		<button type="button" class="cancel" onclick="document.location.href='<?php echo $return_url; ?>';">

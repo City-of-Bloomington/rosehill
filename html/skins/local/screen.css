@@ -3,8 +3,8 @@
 .loginForm th label { color:black; }
 .loginForm fieldset { border:none; margin:0; padding:0; }
 .loginForm legend { display:none; }
-.loginForm button {display:none; }
-.loginForm a { font-weight:bold; color:blue; }
+.loginForm button { }
+.loginForm a { font-weight:bold; color:black !important }
 
 .searchForm {}
 

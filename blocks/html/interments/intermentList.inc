@@ -8,6 +8,7 @@
  */
 $previousSort = isset($_GET['sort']) ? $_GET['sort'] : 'deceasedDate';
 $url = new URL($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+$url->purgeEmptyParameters();
 $return_url = $url->__toString();
 ?>
 <div class="interfaceBox">
@@ -24,6 +25,7 @@ $return_url = $url->__toString();
 			}
 		?>
 		Interments
+		<?php include APPLICATION_HOME.'/blocks/html/serviceButtons.inc'; ?>
 	</h2>
 	<table>
 		<thead>

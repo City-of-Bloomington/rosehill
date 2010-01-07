@@ -34,7 +34,7 @@
 	An easy way to discover the ID numbers is to view source on the search form,
 	or look at the query strings of other searches.
 </p>
-<p>You can also get this information using the cemetery services.</p>
+<p>You can also get this information by looking at the cemetery information.</p>
 
 <h2>Cemetery Information</h2>
 <p><a href="<?php echo BASE_URL; ?>/cemeteries"><?php echo BASE_URL; ?>/cemeteries</a></p>
@@ -46,6 +46,5 @@
 	<a href="<?php echo BASE_URL; ?>/cemeteries"><?php echo BASE_URL; ?>/cemeteries</a>.
 </p>
 <p>
-	You can find out the sections for a cemetery on it's detail view:
-	<?php echo BASE_URL; ?>/cemeteries/viewCemetery.php?cemetery_id=XX"
+	You can find out the sections for a cemetery on it's detail view.
 </p>

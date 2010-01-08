@@ -17,7 +17,6 @@
 			}
 		?>
 		Cemeteries
-		<?php include APPLICATION_HOME.'/blocks/html/serviceButtons.inc'; ?>
 	</h2>
 	<ul><?php
 			foreach ($this->cemeteryList as $cemetery) {
@@ -41,3 +40,4 @@
 		?>
 	</ul>
 </div>
+<?php include APPLICATION_HOME.'/blocks/html/serviceButtons.inc'; ?>

@@ -18,11 +18,7 @@ if (userIsAllowed('Sections')) {
 $name = View::escape($this->cemetery->getName());
 echo "
 <h1>$name</h1>
-<h2>$addButton Sections
-";
-	include APPLICATION_HOME.'/blocks/html/serviceButtons.inc';
-echo "
-</h2>
+<h2>$addButton Sections</h2>
 <table>
 	<thead>
 		<tr><th></th>
@@ -56,3 +52,4 @@ echo "
 	</tbody>
 </table>
 ";
+include APPLICATION_HOME.'/blocks/html/serviceButtons.inc';

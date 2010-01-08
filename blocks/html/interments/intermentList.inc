@@ -25,7 +25,6 @@ $return_url = $url->__toString();
 			}
 		?>
 		Interments
-		<?php include APPLICATION_HOME.'/blocks/html/serviceButtons.inc'; ?>
 	</h2>
 	<table>
 		<thead>
@@ -97,4 +96,6 @@ $return_url = $url->__toString();
 									array('pages'=>$this->intermentList->getPaginator()->getPages()));
 		echo $pageNavigation->render('html');
 	}
+
+	include APPLICATION_HOME.'/blocks/html/serviceButtons.inc';
 ?>

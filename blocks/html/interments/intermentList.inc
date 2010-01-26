@@ -34,6 +34,7 @@ $return_url = $url->__toString();
 						echo "<a href=\"$url\" class=\"sorting\">Last Name</a>";
 					?>
 				</th>
+				<th>M</th>
 				<th><?php
 						$url->sort = $previousSort=='firstname' ? 'firstname desc' : 'firstname';
 						echo "<a href=\"$url\" class=\"sorting\">First Name</a>";
@@ -63,6 +64,7 @@ $return_url = $url->__toString();
 					";
 				}
 				$last = View::escape($interment->getLastname());
+				$middle = View::escape($interment->getMiddleInitial());
 				$first = View::escape($interment->getFirstname());
 				$date = $interment->getDeceasedDate('n/j/Y');
 				$cemetery = View::escape($interment->getCemetery());
@@ -79,6 +81,7 @@ $return_url = $url->__toString();
 				echo "
 				<tr><td>$editButton</td>
 					<td><a href=\"{$interment->getURL()}\">$last</a></td>
+					<td>$middle</td>
 					<td>$first</td>
 					<td>$date</td>
 					<td>$cemetery</td>

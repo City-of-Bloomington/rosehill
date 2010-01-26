@@ -7,7 +7,7 @@
 class Deed
 {
 	private $id;
-	private $section;
+	private $section_id;
 	private $lot;
 	private $lastname1;
 	private $firstname1;
@@ -20,6 +20,7 @@ class Deed
 	private $lot2;
 	private $cemetery_id;
 
+	private $section;
 	private $cemetery;
 
 	/**
@@ -84,7 +85,7 @@ class Deed
 		$this->validate();
 
 		$data = array();
-		$data['section'] = $this->section ? $this->section : null;
+		$data['section_id'] = $this->section_id ? $this->section_id : null;
 		$data['lot'] = $this->lot ? $this->lot : null;
 		$data['lastname1'] = $this->lastname1 ? $this->lastname1 : null;
 		$data['firstname1'] = $this->firstname1 ? $this->firstname1 : null;
@@ -131,11 +132,25 @@ class Deed
 	}
 
 	/**
-	 * @return string
+	 * @return int
+	 */
+	public function getSection_id()
+	{
+		return $this->section_id;
+	}
+
+	/**
+	 * @return Section
 	 */
 	public function getSection()
 	{
-		return $this->section;
+		if ($this->section_id) {
+			if (!$this->section) {
+				$this->section = new Section($this->section_id);
+			}
+			return $this->section;
+		}
+		return null;
 	}
 
 	/**
@@ -257,11 +272,21 @@ class Deed
 	//----------------------------------------------------------------
 
 	/**
-	 * @param string $string
+	 * @param int $int
 	 */
-	public function setSection($string)
+	public function setSection_id($int)
 	{
-		$this->section = trim($string);
+		$this->section = new Section($int);
+		$this->section_id = $int;
+	}
+
+	/**
+	 * @param Section $section
+	 */
+	public function setSection($section)
+	{
+		$this->section_id = $section->getId();
+		$this->section = $section;
 	}
 
 	/**

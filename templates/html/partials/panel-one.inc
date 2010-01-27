@@ -8,20 +8,16 @@
 	<div id="aboutCemeteries">
 		<h2>About the Cemeteries</h2>
 		<ul>
-			<li><a href="http://bloomington.in.gov/documents/viewDocument.php?document_id=1745">
-					Rose Hill Cemetery
+			<li><a href="http://bloomington.in.gov/documents/viewDocument.php?document_id=4676">
+					Rose Hill Cemetery - Driving Directions, Walking Tour, Notable Burials, History
 				</a>
 			</li>
 			<li><a href="http://bloomington.in.gov/documents/viewDocument.php?document_id=1747">
-					White Oak Cemetery
+					White Oak Cemetery - Driving Directions, Interment Information, History
 				</a>
 			</li>
-			<li><a href="http://bloomington.in.gov/documents/viewDocument.php?document_id=1745">
-					Notable Persons
-				</a>
-			</li>
-			<li><a href="http://bloomington.in.gov/documents/viewDocument.php?document_id=1745">
-					Rose Hill Historic Walking Tour
+			<li><a href="http://bloomington.in.gov/documents/viewDocument.php?document_id=4641">
+				Guidelines for Plot Owners
 				</a>
 			</li>
 		</ul>

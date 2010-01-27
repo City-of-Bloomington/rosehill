@@ -9,7 +9,8 @@
 .searchForm {}
 
 #burialLinks td { vertical-align:middle; }
-#aboutCemeteries { float:left; width:180px;  }
+#aboutCemeteries { float:left; width:205px;  }
+#aboutCemeteries ul {padding:0;}
 #cemeteryImages { float:right; width:200px; }
 
 .pageNavigation h4 { display:inline; float:left; }

@@ -14,7 +14,7 @@ if (!userIsAllowed('Sections')) {
 
 $cemetery = new Cemetery($_REQUEST['cemetery_id']);
 
-if (isset($_POST['section'])) {
+if (isset($_POST['code'])) {
 	$section = new Section();
 	$section->setCemetery($cemetery);
 	$section->setCode($_POST['code']);

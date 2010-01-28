@@ -52,6 +52,8 @@
 					}
 				?>
 			</select>
+			<label for="lot">Lot</label>
+			<input name="lot" id="lot" size="3" value="<?php echo isset($_GET['lot']) ? View::escape($_GET['lot']) : ''; ?>" />
 		</td>
 	</tr>
 </table>

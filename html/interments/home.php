@@ -4,7 +4,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
-$knownFields = array('lastname','firstname','cemetery_id','section_id');
+$knownFields = array('lastname','firstname','cemetery_id','section_id','lot');
 
 $search = array();
 foreach ($_GET as $field=>$value) {

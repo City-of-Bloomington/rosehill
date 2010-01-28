@@ -33,7 +33,8 @@
 				</td>
 			</tr>
 			<tr><td><label for="deed-issueDate">Date Issued</label></td>
-				<td><input name="deed[issueDate]" size="10" /></td>
+				<td><input name="deed[issueDate]" size="10" value="<?php echo date('n/j/Y'); ?>" />
+				</td>
 			</tr>
 			<tr><td><label for="deed-notes">notes</label></td>
 				<td><textarea name="deed[notes]" id="deed-notes" rows="3" cols="60"></textarea>

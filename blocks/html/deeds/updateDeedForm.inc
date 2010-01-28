@@ -23,7 +23,7 @@
 								$selected = $this->deed->getCemetery_id()==$cemetery->getId()
 											? 'selected="selected"'
 											: '';
-								echo "<option value=\"{$cemetery->getId()}\">$name</option>";
+								echo "<option value=\"{$cemetery->getId()}\" $selected>$name</option>";
 							}
 						?>
 					</select>

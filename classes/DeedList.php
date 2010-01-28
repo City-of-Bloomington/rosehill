@@ -19,7 +19,7 @@
 class DeedList extends ZendDbResultIterator
 {
 	private $columns = array(
-		'id','section','lot','lot2','cemetery_id',
+		'id','section_id','lot','lot2','cemetery_id',
 		'lastname1','firstname1','middleInitial1',
 		'lastname2','firstname2','middleInitial2',
 		'issueDate','notes'

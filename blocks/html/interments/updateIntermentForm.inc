@@ -73,7 +73,6 @@ $return_url = $this->return_url ? $this->return_url : BASE_URL.'/interments';
 			</tr>
 			<tr><td><label for="interment-middleInitial">MI</label></td>
 				<td><input name="interment[middleInitial]" id="interment-middleInitial"
-						size="1" maxlength="1"
 						value="<?php echo View::escape($this->interment->getMiddleInitial()); ?>" />
 				</td>
 			</tr>

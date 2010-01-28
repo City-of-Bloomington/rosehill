@@ -48,7 +48,7 @@
 				<td><input name="deed[firstname1]" id="deed-firstname1" /></td>
 			</tr>
 			<tr><td><label for="deed-middleInitial1">MI</label></td>
-				<td><input name="deed[middleInitial1]" id="deed-middleInitial1" size="1" maxlength="1" />
+				<td><input name="deed[middleInitial1]" id="deed-middleInitial1" />
 				</td>
 			</tr>
 			<tr><td><label for="deed-lastname1">Last</label></td>
@@ -62,7 +62,7 @@
 				<td><input name="deed[firstname2]" id="deed-firstname2" /></td>
 			</tr>
 			<tr><td><label for="deed-middleInitial2">MI</label></td>
-				<td><input name="deed[middleInitial2]" id="deed-middleInitial2" size="1" maxlength="1" />
+				<td><input name="deed[middleInitial2]" id="deed-middleInitial2" />
 				</td>
 			</tr>
 			<tr><td><label for="deed-lastname2">Last</label></td>

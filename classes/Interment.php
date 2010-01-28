@@ -380,11 +380,11 @@ class Interment
 	}
 
 	/**
-	 * @param char $char
+	 * @param string $string
 	 */
-	public function setMiddleInitial($char)
+	public function setMiddleInitial($string)
 	{
-		$this->middleInitial = $char;
+		$this->middleInitial = trim($string);
 	}
 
 	/**

@@ -67,7 +67,6 @@
 			</tr>
 			<tr><td><label for="deed-middleInitial1">MI</label></td>
 				<td><input name="deed[middleInitial1]" id="deed-middleInitial1"
-							size="1" maxlength="1"
 							value="<?php echo View::escape($this->deed->getMiddleInitial1()); ?>" />
 				</td>
 			</tr>
@@ -87,7 +86,6 @@
 			</tr>
 			<tr><td><label for="deed-middleInitial2">MI</label></td>
 				<td><input name="deed[middleInitial2]" id="deed-middleInitial2"
-							size="1" maxlength="1"
 							value="<?php echo View::escape($this->deed->getMiddleInitial2()); ?>" />
 				</td>
 			</tr>

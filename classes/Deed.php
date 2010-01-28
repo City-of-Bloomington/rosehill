@@ -314,11 +314,11 @@ class Deed
 	}
 
 	/**
-	 * @param char $char
+	 * @param string $string
 	 */
-	public function setMiddleInitial1($char)
+	public function setMiddleInitial1($string)
 	{
-		$this->middleInitial1 = $char;
+		$this->middleInitial1 = trim($string);
 	}
 
 	/**
@@ -338,11 +338,11 @@ class Deed
 	}
 
 	/**
-	 * @param char $char
+	 * @param string $string
 	 */
-	public function setMiddleInitial2($char)
+	public function setMiddleInitial2($string)
 	{
-		$this->middleInitial2 = $char;
+		$this->middleInitial2 = trim($string);
 	}
 
 	/**

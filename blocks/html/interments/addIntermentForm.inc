@@ -50,7 +50,7 @@ $return_url = isset($this->return_url) ? $this->return_url : BASE_URL.'/intermen
 				<td><input name="interment[firstname]" id="interment-firstname" /></td>
 			</tr>
 			<tr><td><label for="interment-middleInitial">MI</label></td>
-				<td><input name="interment[middleInitial]" id="interment-middleInitial" size="1" maxlength="1" />
+				<td><input name="interment[middleInitial]" id="interment-middleInitial" />
 				</td>
 			</tr>
 			<tr><td><label for="interment-lastname">Last</label></td>

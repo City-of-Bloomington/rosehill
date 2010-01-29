@@ -27,3 +27,14 @@ COB.populateSections = function(cemetery_id,select_id,BASE_URL) {
 		}
 	});
 }
+
+/* A handy function for doing pop-up confirmations when deleting something */
+COB.deleteConfirmation = function (url) {
+	if (confirm("Are you really sure you want to delete this?\n\nOnce deleted it will be gone forever.")) {
+		document.location.href = url;
+		return true;
+	}
+	else {
+		return false;
+	}
+};

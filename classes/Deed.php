@@ -119,6 +119,14 @@ class Deed
 		$this->id = $zend_db->lastInsertId('deeds','id');
 	}
 
+	public function delete()
+	{
+		if ($this->id) {
+			$zend_db = Database::getConnection();
+			$zend_db->delete('deeds','id='.$this->id);
+		}
+	}
+
 	//----------------------------------------------------------------
 	// Generic Getters
 	//----------------------------------------------------------------

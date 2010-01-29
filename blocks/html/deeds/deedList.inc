@@ -41,6 +41,15 @@
 						Edit
 					</button>
 					";
+
+					$url = new URL(BASE_URL.'/deeds/deleteDeed.php');
+					$url->deed_id = $deed->getId();
+					$url->return_url = "http://$_SERVER[SERVER_NAME]$_SERVER[REQUEST_URI]";
+					$deleteButton = "
+					<button type=\"button\" class=\"delete\" onclick=\"COB.deleteConfirmation('$url');\">
+						Delete
+					</button>
+					";
 				}
 				$section = View::escape($deed->getSection());
 				$lot = View::escape($deed->getLot());
@@ -49,7 +58,7 @@
 				$date = $deed->getIssueDate('n/j/Y');
 				$cemetery = $deed->getCemetery() ? View::escape($deed->getCemetery()->getName()) : '';
 				echo "
-				<tr><td>$editButton</td>
+				<tr><td>$editButton $deleteButton</td>
 					<td>{$deed->getSection()}, {$deed->getLot()}</td>
 					<td>$owner1</td>
 					<td>$owner2</td>

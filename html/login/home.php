@@ -1,9 +1,6 @@
 <?php
 /**
- *	Logs a user into the system.
- *
- *	A logged in user will have a $_SESSION['USER']
- *								$_SESSION['IP_ADDRESS']
+ *	Logs a user into the system using CAS
  *
  * @copyright 2006-2010 City of Bloomington, Indiana
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
@@ -14,17 +11,15 @@ if (isset($_REQUEST['return_url'])) {
 }
 require_once '/var/www/libraries/SimpleCAS/SimpleCAS/Autoload.php';
 
-$options = array('hostname'=>'bandit.bloomington.in.gov',
-				'uri'=>'cas');
+$options = array('hostname'=>CAS_SERVER,'uri'=>CAS_URI);
 $protocol = new SimpleCAS_Protocol_Version2($options);
-
 $client = SimpleCAS::client($protocol);
 $client->forceAuthentication();
 
 if ($client->isAuthenticated()) {
 	$user = new User($client->getUsername());
 	$user->startNewSession();
-	setcookie('cas_session','true',0,'/','.bloomington.in.gov');
+	setcookie(CAS_COOKIE,'true',0,'/',CAS_DOMAIN);
 
 	if (isset($_SESSION['return_url'])) {
 		header('Location: '.$_SESSION['return_url']);

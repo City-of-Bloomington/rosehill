@@ -1,8 +1,6 @@
 <?php
 /**
- *	Logs a user into the system.
- *
- *	A logged in user will have a $_SESSION['USER']
+ *	Logs a user into the system using this application's internal authentication
  *
  * @copyright 2006-2009 City of Bloomington, Indiana
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt

@@ -48,6 +48,19 @@ $section_lot = View::escape(implode(', ',$section_lot));
 	</tr>
 </table>
 <?php
+	if ($this->interment->getLot()) {
+		$url = new URL(BASE_URL.'/interments');
+		$url->cemetery_id = $this->interment->getCemetery_id();
+		$url->section_id = $this->interment->getSection_id();
+		$url->lot = $this->interment->getLot();
+		echo "
+		<div>
+			<button type=\"button\" onclick=\"document.location.href='$url';\">
+				View All Interments for this Lot
+			</button>
+		</div>
+		";
+	}
 	if (userIsAllowed('Interments')) {
 		$notes = View::escape($this->interment->getNotes());
 		echo "<p>$notes</p>";

@@ -126,6 +126,14 @@ class Interment
 		$this->id = $zend_db->lastInsertId('interments','id');
 	}
 
+	public function delete()
+	{
+		if ($this->id) {
+			$zend_db = Database::getConnection();
+			$zend_db->delete('interments','id='.$this->id);
+		}
+	}
+
 	//----------------------------------------------------------------
 	// Generic Getters
 	//----------------------------------------------------------------

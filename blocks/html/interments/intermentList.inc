@@ -62,6 +62,14 @@ $return_url = $url->__toString();
 						Edit
 					</button>
 					";
+					$url = new URL(BASE_URL.'/interments/deleteInterment.php');
+					$url->interment_id = $interment->getId();
+					$url->return_url = "http://$_SERVER[SERVER_NAME]$_SERVER[REQUEST_URI]";
+					$deleteButton = "
+					<button type=\"button\" class=\"delete\" onclick=\"COB.deleteConfirmation('$url');\">
+						Delete
+					</button>
+					";
 				}
 				$last = View::escape($interment->getLastname());
 				$middle = View::escape($interment->getMiddleInitial());
@@ -79,7 +87,7 @@ $return_url = $url->__toString();
 				$section_lot = View::escape(implode(', ',$section_lot));
 
 				echo "
-				<tr><td>$editButton</td>
+				<tr><td>$editButton $deleteButton</td>
 					<td><a href=\"{$interment->getURL()}\">$last</a></td>
 					<td>$middle</td>
 					<td>$first</td>

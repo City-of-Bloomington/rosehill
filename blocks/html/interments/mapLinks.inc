@@ -1,7 +1,7 @@
 <?php
 /**
  * @copyright 2009 City of Bloomington, Indiana
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  * @param Interment $this->interment
  */
 $mapURL = BASE_URL.'/interments/maps.php?interment_id='.$this->interment->getId();

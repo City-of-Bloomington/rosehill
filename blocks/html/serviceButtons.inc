@@ -3,7 +3,7 @@
  * Renders buttons for each of the known output formats, pointing to the current URL
  *
  * @copyright 2010 City of Bloomington, Indiana
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
 $serviceURL = new URL($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);

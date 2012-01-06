@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2006-2009 City of Bloomington, Indiana
+ * @copyright 2006-2012 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
@@ -15,6 +15,20 @@ class User extends SystemUser
 	private $person;
 	private $roles = array();
 	private $newPassword; // the User's new password, unencrypted
+
+	/**
+	 * Should provide the list of methods supported
+	 *
+	 * There should always be at least one method, called "local"
+	 * Additional methods must match classes that implement External Identities
+	 * See: ExternalIdentity.php
+	 *
+	 * @return array
+	 */
+	public static function getAuthenticationMethods()
+	{
+		return array('local','Employee');
+	}
 
 	/**
 	 * @param int|string $id

@@ -20,6 +20,9 @@
 				Guidelines for Plot Owners
 				</a>
 			</li>
+			<li><a href="http://bloomington.in.gov/documents/viewDocument.php?document_id=4641">Deed and Plot Information
+				</a>
+			</li>
 		</ul>
 		<h2>Website Support</h2>
 		<ul>

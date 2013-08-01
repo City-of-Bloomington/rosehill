@@ -6,32 +6,39 @@
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
-if (isset($_REQUEST['return_url'])) {
-	$_SESSION['return_url'] = $_REQUEST['return_url'];
-}
-require_once CAS.'/SimpleCAS/Autoload.php';
+if (defined('CAS')) {
+	if (isset($_REQUEST['return_url'])) {
+		$_SESSION['return_url'] = $_REQUEST['return_url'];
+	}
 
-$options = array('hostname'=>CAS_SERVER,'uri'=>CAS_URI);
-$protocol = new SimpleCAS_Protocol_Version2($options);
-$client = SimpleCAS::client($protocol);
-$client->forceAuthentication();
+	require_once CAS.'/SimpleCAS/Autoload.php';
 
-if ($client->isAuthenticated()) {
-	try {
-		$user = new User($client->getUsername());
-		$user->startNewSession();
+	$options = array('hostname'=>CAS_SERVER,'uri'=>CAS_URI);
+	$protocol = new SimpleCAS_Protocol_Version2($options);
+	$client = SimpleCAS::client($protocol);
+	$client->forceAuthentication();
 
-		if (isset($_SESSION['return_url'])) {
-			header('Location: '.$_SESSION['return_url']);
+	if ($client->isAuthenticated()) {
+		try {
+			$user = new User($client->getUsername());
+			$user->startNewSession();
+
+			if (isset($_SESSION['return_url'])) {
+				header('Location: '.$_SESSION['return_url']);
+			}
+			else {
+				header('Location: '.BASE_URL);
+			}
 		}
-		else {
-			header('Location: '.BASE_URL);
+		catch (Exception $e) {
+			$_SESSION['errorMessages'][] = $e;
 		}
 	}
-	catch (Exception $e) {
-		$_SESSION['errorMessages'][] = $e;
+	else {
+		header('Location: '.BASE_URL);
 	}
 }
-else {
-	header('Location: '.BASE_URL);
-}
+
+$template = new Template();
+$template->blocks[] = new Block('loginForm.inc');
+echo $template->render();

@@ -2,41 +2,37 @@
 /**
  *	Logs a user into the system using CAS
  *
- * @copyright 2006-2010 City of Bloomington, Indiana
+ * @copyright 2006-2013 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
-if (defined('CAS')) {
-	if (isset($_REQUEST['return_url'])) {
-		$_SESSION['return_url'] = $_REQUEST['return_url'];
-	}
+// If they don't have CAS configured, send them onto the application's
+// internal authentication system
+if (!defined('CAS')) {
+	header('Location: '.BASE_URL.'/login/login.php?return_url='.$this->return_url);
+	exit();
+}
 
-	require_once CAS.'/SimpleCAS/Autoload.php';
+require_once CAS.'/CAS.php';
+phpCAS::client(CAS_VERSION_2_0, CAS_SERVER, 443, CAS_URI, false);
+phpCAS::setNoCasServerValidation();
+phpCAS::forceAuthentication();
 
-	$options = array('hostname'=>CAS_SERVER,'uri'=>CAS_URI);
-	$protocol = new SimpleCAS_Protocol_Version2($options);
-	$client = SimpleCAS::client($protocol);
-	$client->forceAuthentication();
+// at this step, the user has been authenticated by the CAS server
+// and the user's login name can be read with phpCAS::getUser().
 
-	if ($client->isAuthenticated()) {
-		try {
-			$user = new User($client->getUsername());
-			$user->startNewSession();
-
-			if (isset($_SESSION['return_url'])) {
-				header('Location: '.$_SESSION['return_url']);
-			}
-			else {
-				header('Location: '.BASE_URL);
-			}
-		}
-		catch (Exception $e) {
-			$_SESSION['errorMessages'][] = $e;
-		}
-	}
-	else {
-		header('Location: '.BASE_URL);
-	}
+// They may be authenticated according to CAS,
+// but that doesn't mean they have person record
+// and even if they have a person record, they may not
+// have a user account for that person record.
+try {
+	$user = new User(phpCAS::getUser());
+	$user->startNewSession();
+	header("Location: ".BASE_URL);
+	exit();
+}
+catch (Exception $e) {
+	$_SESSION['errorMessages'][] = $e;
 }
 
 $template = new Template();

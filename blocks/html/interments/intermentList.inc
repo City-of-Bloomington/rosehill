@@ -53,6 +53,7 @@ $return_url = $url->__toString();
 		<?php
 			foreach ($this->intermentList as $interment) {
 				$editButton = '';
+				$deleteButton = '';
 				if (userIsAllowed('Interments')) {
 					$editURL = new URL(BASE_URL.'/interments/updateInterment.php');
 					$editURL->interment_id = $interment->getId();

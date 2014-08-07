@@ -1,0 +1,10 @@
+/buildignore
+/build.sh
+/build
+/dist
+.git/
+.git*
+configuration.inc
+/data/sessions/*
+/scripts/backup.cnf
+/html/js/yui3/src/

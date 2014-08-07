@@ -1,14 +1,5 @@
 <?php
 /**
- * Replace this copyright statement with your own.  All the generated code
- * will include this copyright statement
- */
-define('COPYRIGHT',"/**
- * @copyright 2007-2012 City of Bloomington, Indiana
- * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
- * @author Cliff Ingham <inghamn@bloomington.in.gov>
- */");
-/**
  * Used to keep sessions on the same webserver seperate;
  */
 define('APPLICATION_NAME','application_name');
@@ -37,7 +28,8 @@ Zend_Loader_Autoloader::getInstance();
  * The URL to get to this site
  * Do NOT use a trailing slash
  */
-define('BASE_URL','http://localhost');
+define('BASE_URL','http://localhost/application_name');
+define('BASE_URI', '/application_name');
 
 /**
  * Used when there's an error on the site.  The Framework will
@@ -105,6 +97,9 @@ define('DIRECTORY_ADMIN_PASS','password');
 //define('DIRECTORY_USER_BINDING','uid={username},'.DIRECTORY_BASE_DN);
 //define('DIRECTORY_ADMIN_BINDING', 'uid=admin,'.DIRECTORY_BASE_DN);
 //define('DIRECTORY_ADMIN_PASS','password');
+
+define('YUI', BASE_URI.'/js/yui3/build');
+
 
 /**
  * Import global functions that we use for many applications we write

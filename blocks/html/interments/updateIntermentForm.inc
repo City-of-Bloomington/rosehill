@@ -1,12 +1,13 @@
 <?php
 /**
- * @copyright 2009 City of Bloomington, Indiana
+ * @copyright 2009-2014 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  * @param Interment $this->interment
  * @param string $this->return_url
  */
 $return_url = $this->return_url ? $this->return_url : BASE_URL.'/interments';
+
 ?>
 <h2>Update Interment</h2>
 <form method="post" action="<?php echo BASE_URL; ?>/interments/updateInterment.php">
@@ -37,13 +38,13 @@ $return_url = $this->return_url ? $this->return_url : BASE_URL.'/interments';
 				<td><select name="interment[section_id]" id="interment-section_id">
 						<option></option>
 						<?php
-							if ($this->interment->getSection_id()) {
+							if ($this->interment->getCemetery_id()) {
 								foreach ($this->interment->getCemetery()->getSections() as $section) {
-									$name = $section->getName() ? View::escape($section->getName()) : View::escape($section->getCode());
+									$code = View::escape($section->getCode());
 									$selected = $section->getId()==$this->interment->getSection_id()
 												? 'selected="selected"'
 												: '';
-									echo "<option value=\"{$section->getId()}\" $selected>$name</option>";
+									echo "<option value=\"{$section->getId()}\" $selected>$code</option>";
 								}
 							}
 						?>

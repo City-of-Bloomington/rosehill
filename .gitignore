@@ -1,4 +1,6 @@
 configuration.inc
+site_config.inc
 build
 dist
 data/sessions/*
+

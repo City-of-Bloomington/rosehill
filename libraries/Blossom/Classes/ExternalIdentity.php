@@ -1,9 +1,10 @@
 <?php
 /**
- * @copyright 20011 City of Bloomington, Indiana
+ * @copyright 2011-2013 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
+namespace Blossom\Classes;
 
 interface ExternalIdentity
 {
@@ -25,15 +26,11 @@ interface ExternalIdentity
 	 * @return string
 	 */
 	public function getFirstname();
-
-	/**
-	 * @return string
-	 */
 	public function getLastname();
-
-	/**
-	 * @return string
-	 */
 	public function getEmail();
-
+	public function getPhone();
+	public function getAddress();
+	public function getCity();
+	public function getState();
+	public function getZip();
 }

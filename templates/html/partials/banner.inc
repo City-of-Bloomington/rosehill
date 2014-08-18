@@ -1,18 +1,32 @@
-<div id="banner">
-	<div id="application_name">
-		<a href="<?php echo BASE_URL; ?>/">Rose Hill &amp; White Oak Cemeteries</a>
-	</div>
+<?php
+use Blossom\Classes\View;
+?>
+<header>
+    <ul id="utilityBar">
+        <?php
+            $li = '<li><a href="%s">%s</a></li>';
+
+            if (isset($_SESSION['USER'])) {
+                echo sprintf($li, BASE_URI.'/login/logout', $this->translate('labels.logout'));
+
+                $name = View::escape($_SESSION['USER']->getFullname());
+                echo sprintf('<li>'.sprintf($this->translate('messages.signed_in_as'), $name).'</li>');
+            }
+            else {
+                $return_url = View::escape($_SERVER['REQUEST_URI']);
+                echo sprintf($li, BASE_URI.'/login?return_url='.$return_url, $this->translate('labels.login'));
+            }
+        ?>
+    </ul>
+	<h1>
+		<a href="<?php echo BASE_URI; ?>">Rose Hill &amp; White Oak Cemeteries</a>
+	</h1>
 	<div id="location_name">
-		<a href="<?php echo BASE_URL; ?>">City of Bloomington, Mark Kruzan, Mayor</a>
+		<a href="<?php echo BASE_URI; ?>">City of Bloomington, Mark Kruzan, Mayor</a>
 	</div>
-	<div class="loginForm">
-		<?php
-			if (isset($_SESSION['USER'])) {
-				echo "<a href=\"".BASE_URL."/login/logout.php\">Logout</a>";
-			}
-			else {
-				echo "<a href=\"".BASE_URL."/login\">Login</a>";
-			}
-		?>
-	</div>
-</div>
+	<?php
+        if (isset($_SESSION['USER'])) {
+            include __DIR__.'/menubar.inc';
+        }
+	?>
+</header>

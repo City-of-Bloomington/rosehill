@@ -3,11 +3,8 @@
 	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
 	<meta http-equiv="Content-Script-Type" content="text/javascript" />
 	<link rel="SHORTCUT ICON" href="/favicon.ico" />
-	<style type="text/css" media="screen">
-		@import url('<?php echo BASE_URL; ?>/skins/origin-external/reset.css');
-		@import url('<?php echo BASE_URL; ?>/skins/local/layouts/<?php echo $this->layout; ?>.css');
-		@import url('<?php echo BASE_URL; ?>/skins/origin-external/screen.css');
-		@import url('<?php echo BASE_URL; ?>/skins/local/screen.css');
-	</style>
-	<title>Cemeteries</title>
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/css/local/reset.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/css/local/layouts/<?php echo $this->layout; ?>.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/css/local/screen.css" />
+    <title><?php echo isset($this->title) ? self::escape($this->title) : 'Cemeteries'; ?></title>
 </head>

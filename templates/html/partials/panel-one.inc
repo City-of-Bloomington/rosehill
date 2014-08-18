@@ -14,7 +14,7 @@
 			</li>
 			<li><h4><a href="http://bloomington.in.gov/documents/viewDocument.php?document_id=1747">
 					White Oak Cemetery</h4> </a><p> Driving Directions, Interment Information, History
-				
+
 			</li>
 			<li><a href="http://bloomington.in.gov/documents/viewDocument.php?document_id=4641">
 				Guidelines for Plot Owners
@@ -40,8 +40,8 @@
 
 	</div>
 	<div id="cemeteryImages">
-		<div><img alt="Rose Hill Cemetery" src="<?php echo BASE_URL."/images/rosehill.png"; ?>" /></div>
-		<div><img alt="White Oak Cemetery" src="<?php echo BASE_URL."/images/whiteoakweb.jpg"; ?>" /></div>
+		<div><img alt="Rose Hill Cemetery" src="<?php echo BASE_URI."/images/rosehill.png"; ?>" /></div>
+		<div><img alt="White Oak Cemetery" src="<?php echo BASE_URI."/images/whiteoakweb.jpg"; ?>" /></div>
 	</div>
 <?php
 }

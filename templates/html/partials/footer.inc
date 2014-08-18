@@ -1,11 +1,13 @@
 <div id="footer">
 	<p>
-		<?php
-			# Calculate the process time
-			$endTime = microtime(1);
-			$processTime = $endTime - $startTime;
-			echo "<!-- Process Time: $processTime -->";
-		?>
+        <?php
+            global $startTime;
+
+            # Calculate the process time
+            $endTime = microtime(1);
+            $processTime = $endTime - $startTime;
+            echo "<!-- Process Time: $processTime -->";
+        ?>
 	</p>
 </div>
 <script type="text/javascript" src="<?php echo YUI; ?>/yui/yui-min.js"></script>

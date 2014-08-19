@@ -20,8 +20,8 @@ class SaveAndCancelButtons
 	public function saveAndCancelButtons($cancelURL)
 	{
 		return "
-		<button type=\"submit\" class=\"save\">{$this->template->_('labels.save')}</button>
-		<a href=\"$cancelURL\"  class=\"cancel\">{$this->template->_('labels.cancel')}</a>
+		<button type=\"submit\" class=\"save\">{$this->template->_('save')}</button>
+		<a href=\"$cancelURL\"  class=\"cancel\">{$this->template->_('cancel')}</a>
 		";
 	}
 }

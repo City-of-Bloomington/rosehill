@@ -1,13 +1,16 @@
-<cemeteries>
 <?php
 /**
- * @copyright 2010 City of Bloomington, Indiana
+ * @copyright 2010-2014 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
+ * @param Zend\Db\Result $this->cemeteries
  */
-foreach ($this->cemeteryList as $cemetery) {
-	$name = View::escape($cemetery->getName());
-	$url = View::escape($cemetery->getURL());
+use Blossom\Classes\View;
+
+echo '<cemeteries>';
+foreach ($this->cemeteries as $cemetery) {
+	$name         = View::escape($cemetery->getName());
+	$url          = View::escape($cemetery->getURL());
 	$googleMapUrl = View::escape($cemetery->getGoogleMapURL());
 	echo "
 	<cemetery id=\"{$cemetery->getId()}\">
@@ -17,5 +20,4 @@ foreach ($this->cemeteryList as $cemetery) {
 	</cemetery>
 	";
 }
-?>
-</cemeteries>
+echo '</cemeteries>';

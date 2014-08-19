@@ -1,16 +1,18 @@
 <?php
 /**
- * @copyright 2010 City of Bloomington, Indiana
+ * @copyright 2010-2014 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
-class Map
+namespace Application\Models;
+
+class Map extends ActiveRecord
 {
 	public static $extensions = array(
-		'jpg'=>array('mime_type'=>'image/jpeg','media_type'=>'image'),
-		'gif'=>array('mime_type'=>'image/gif','media_type'=>'image'),
-		'png'=>array('mime_type'=>'image/png','media_type'=>'image'),
-		'tiff'=>array('mime_type'=>'image/tiff','media_type'=>'image')
+		'jpg'  => ['mime_type'=>'image/jpeg', 'media_type'=>'image'],
+		'gif'  => ['mime_type'=>'image/gif' , 'media_type'=>'image'],
+		'png'  => ['mime_type'=>'image/png' , 'media_type'=>'image'],
+		'tiff' => ['mime_type'=>'image/tiff', 'media_type'=>'image']
 	);
 
 	/**
@@ -18,12 +20,12 @@ class Map
 	 * @param array|string $file  Either an entry from $_FILES or a path to a file
 	 * @param string $newName	The filename to use
 	 */
-	public static function saveFile($directory,$file,$newName)
+	public static function saveFile($directory, $file, $newName)
 	{
 		// Handle passing in either a $_FILES array or just a path to a file
 		$tempFile = is_array($file) ? $file['tmp_name'] : $file;
 		if (!$tempFile) {
-			throw new Exception('media/uploadFailed');
+			throw new \Exception('media/uploadFailed');
 		}
 
 		# Find out the mime type for this file
@@ -33,7 +35,7 @@ class Map
 
 		// Make sure it's a known file type
 		if (!array_key_exists(strtolower($extension),self::$extensions)) {
-			throw new Exception('unknownFileType');
+			throw new \Exception('unknownFileType');
 		}
 
 		// Clean out any previous version of the file
@@ -50,7 +52,7 @@ class Map
 		chmod($newFile,0666);
 
 		if (!is_file($newFile)) {
-			throw new Exception('media/uploadFailed');
+			throw new \Exception('media/uploadFailed');
 		}
 	}
 }

@@ -6,7 +6,7 @@
  */
 var COB = {
 	populateSections: function (cemetery_id, select_id, BASE_URL) {
-		var url = BASE_URL + '/cemeteries/viewCemetery.php?format=json;cemetery_id=' + cemetery_id;
+		var url = BASE_URL + '/cemeteries/view?format=json;cemetery_id=' + cemetery_id;
 
 		YUI().use('io', 'json', function (Y) {
 			Y.io(url, {

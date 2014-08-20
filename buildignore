@@ -5,6 +5,7 @@
 .git/
 .git*
 configuration.inc
+site_config.inc
 /data/sessions/*
 /scripts/backup.cnf
-/html/js/yui3/src/
+/public/js/yui3/src/

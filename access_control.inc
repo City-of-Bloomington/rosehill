@@ -34,8 +34,8 @@ $ZEND_ACL->allow(null,'login');
 
 // Permissions for unauthenticated browsing
 $ZEND_ACL->allow(null,
-                array('index'),
-                array('index'));
+                ['index', 'deeds', 'interments'],
+                ['index']);
 
 // Allow Staff to do stuff
 $ZEND_ACL->allow('Staff',['deeds', 'interments']);

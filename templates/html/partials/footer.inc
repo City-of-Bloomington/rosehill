@@ -10,5 +10,10 @@
         ?>
 	</p>
 </div>
-<script type="text/javascript" src="<?php echo YUI; ?>/yui/yui-min.js"></script>
-<script type="text/javascript" src="<?php echo BASE_URI; ?>/js/functions.js"></script>
+<?php
+    if (isset($this->assets['scripts'])) {
+        foreach ($this->assets['scripts'] as $url) {
+            echo "<script type=\"text/javascript\" src=\"$url\"></script>\n";
+        }
+    }
+?>

@@ -28,8 +28,11 @@ Zend_Loader_Autoloader::getInstance();
  * The URL to get to this site
  * Do NOT use a trailing slash
  */
-define('BASE_URL','http://localhost/application_name');
-define('BASE_URI', '/application_name');
+define('BASE_URI' , '/burials');
+define('BASE_HOST', isset($_SERVER['HTTP_X_FORWARDED_HOST'])
+                        ? $_SERVER['HTTP_X_FORWARDED_HOST']
+                        : 'tarantula.bloomington.in.gov');
+define('BASE_URL' , "http://".BASE_HOST.BASE_URI);
 
 /**
  * Used when there's an error on the site.  The Framework will

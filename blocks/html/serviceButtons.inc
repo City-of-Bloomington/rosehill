@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
-$serviceURL = new URL($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+$serviceURL = new URL('https://'.BASE_HOST.$_SERVER['REQUEST_URI']);
 $serviceURL->purgeEmptyParameters();
 $serviceURL->format = 'xml';
 echo "

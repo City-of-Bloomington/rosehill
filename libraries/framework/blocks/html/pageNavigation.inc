@@ -6,7 +6,7 @@
  * @param Zend_Paginator $this->pages
  */
 if ($this->pages->pageCount > 1) {
-	$url = new URL($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+	$url = new URL('https://'.BASE_HOST.$_SERVER['REQUEST_URI']);
 	$url->purgeEmptyParameters();
 
 	echo '<ul class="pageNavigation">';

@@ -28,7 +28,7 @@ if ($template->outputFormat=='html') {
 	}
 
 	if (userIsAllowed('Interments') && !count($search)) {
-		$return_url = new URL($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+		$return_url = new URL('https://'.BASE_HOST.$_SERVER['REQUEST_URI']);
 		$template->blocks[] = new Block('interments/addIntermentForm.inc',
 										array('return_url'=>$return_url));
 	}

@@ -44,7 +44,7 @@
 
 					$url = new URL(BASE_URL.'/deeds/deleteDeed.php');
 					$url->deed_id = $deed->getId();
-					$url->return_url = "https://'.BASE_HOST.$_SERVER['REQUEST_URI']";
+					$url = new URL('https://'.BASE_HOST.$_SERVER['REQUEST_URI']);
 					$deleteButton = "
 					<button type=\"button\" class=\"delete\" onclick=\"COB.deleteConfirmation('$url');\">
 						Delete

@@ -7,7 +7,7 @@
  * @param GET sort
  */
 $previousSort = isset($_GET['sort']) ? $_GET['sort'] : 'deceasedDate';
-$url = new URL('https://'.BASE_HOST.$_SERVER['REQUEST_URI']);
+$url =  new URL('https://'.BASE_HOST.$_SERVER['REQUEST_URI']);
 $url->purgeEmptyParameters();
 $return_url = $url->__toString();
 ?>
@@ -65,7 +65,7 @@ $return_url = $url->__toString();
 					";
 					$url = new URL(BASE_URL.'/interments/deleteInterment.php');
 					$url->interment_id = $interment->getId();
-					$url->return_url = "https://'.BASE_HOST.$_SERVER['REQUEST_URI']);
+					$url->return_url = "http://$_SERVER[SERVER_NAME]$_SERVER[REQUEST_URI]";
 					$deleteButton = "
 					<button type=\"button\" class=\"delete\" onclick=\"COB.deleteConfirmation('$url');\">
 						Delete

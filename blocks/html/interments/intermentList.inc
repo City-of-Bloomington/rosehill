@@ -34,12 +34,12 @@ $return_url = $url->__toString();
 						echo "<a href=\"$url\" class=\"sorting\">Last Name</a>";
 					?>
 				</th>
-				<th>M</th>
 				<th><?php
 						$url->sort = $previousSort=='firstname' ? 'firstname desc' : 'firstname';
 						echo "<a href=\"$url\" class=\"sorting\">First Name</a>";
 					?>
 				</th>
+				<th>M</th>
 				<th><?php
 						$url->sort = $previousSort=='deceasedDate' ? 'deceasedDate desc' : 'deceasedDate';
 						echo "<a href=\"$url\" class=\"sorting\">Date of Death</a>";
@@ -90,8 +90,8 @@ $return_url = $url->__toString();
 				echo "
 				<tr><td>$editButton $deleteButton</td>
 					<td><a href=\"{$interment->getURL()}\">$last</a></td>
-					<td>$middle</td>
 					<td>$first</td>
+					<td>$middle</td>
 					<td>$date</td>
 					<td>$cemetery</td>
 					<td>$section_lot</td>

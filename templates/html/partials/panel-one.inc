@@ -16,10 +16,6 @@
 					White Oak Cemetery</h4> </a><p> Driving Directions, Interment Information, History
 
 			</li>
-			<li><a href="https://bloomington.in.gov/sites/default/files/2018-05/Rose%20Hill%20Cemetery%20Guidelines%20for%20Plot%20Owners%2C%20May%202018.pdf">
-				Guidelines for Plot Owners
-				</a>
-			</li>
 		</ul>
 		<h2>Website Support</h2>
 		<ul>
